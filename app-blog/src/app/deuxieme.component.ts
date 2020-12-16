@@ -26,3 +26,4 @@ export class DeuxiemeComponent{
         this.articles = this.data.getAll();
     }
 }
+// 
