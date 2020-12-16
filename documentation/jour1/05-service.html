@@ -1,0 +1,95 @@
+// quand on veut faire un projet modulaire 
+
+// au lieu de stocker les données dans un composant 
+
+categories : Array<string> = [
+    "js",
+    "angular",
+    "react",
+    "css",
+    "nodejs"
+];
+
+// il est intéressant de stocker ce genre de données dans un fichier à part 
+// service 
+// pouvoir le partager entre plusieurs composants 
+// sortir des composants => autre type de class service  ! 
+
+comme pour les composants , on peut créer les services de deux manières différentes 
+
+manuellement 
+
+via le shell 
+ng generate service nom-du-service 
+ng g s nom-du-service 
+
+service => class qui possède des méthodes => utilisées entre les différents composants 
+
+---------------------------- 
+
+manuellement 
+
+src/app créer un dossier services 
+
+dans le dossier services, créer un fichier categories.service.ts 
+
+class CategoriesService{ 
+    getAll<T> () {
+        return [
+            "js",
+            "angular",
+            "react",
+            "css",
+            "nodejs"
+        ];
+    }
+}
+
+// pouvoir l'utiliser dans un composant => dans le composant article que l'on vient de créer 
+
+// 3 temps :
+
+// 0 export le service 
+// 1 il faut déclarer le service dans le fichier app.module.ts 
+
+import { CategoriesService } from "./services/categories.service" ;
+
+providers: [
+    CategoriesService
+],
+// 2 utiliser dans le composant article 
+article.component.ts 
+
+import { CategoriesService } from './../services/categories.service';
+
+créer une nouvelle variable de class 
+categories: any = (new CategoriesService()).getAll()
+
+vue 
+
+<ul>
+    <li *ngFor="let categorie of categories">{{ categorie }}</li>
+</ul>
+
+
+// cas pratique , créer un service data 
+
+1 méthode getAll()
+
+retourner un tableau 
+[
+    { 
+        id : 1 ,
+        nom : "Alain",
+        age : 23
+    },
+    {
+        id : 2 ,
+        nom : "Béatrice",
+        age : 12
+    }
+]
+
+2 utiliser ce service dans le composant <premier></premier> 
+=> importer et faire une boucle 
+<p> id nom a age </p>

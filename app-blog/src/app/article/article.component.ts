@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoriesService } from './../services/categories.service';
 
 @Component({
   selector: 'app-article',
@@ -9,6 +10,9 @@ import { Component, OnInit } from '@angular/core';
             <p>{{ premiersMot2(5) }}</p>
             <ul>
               <li *ngFor="let item of tab">{{ item }}</li>
+            </ul>
+            <ul>
+              <li *ngFor="let categorie of categories">{{ categorie }}</li>
             </ul>
           </div>`,
   styleUrls: ['./article.component.css']
@@ -24,6 +28,8 @@ export class ArticleComponent implements OnInit {
     "item4",
     "item5"
   ];
+  categories : any = (new CategoriesService()).getAll()
+
   premiersMot( nbLettre : number ) : string {
     return this.p.substring( 0 , nbLettre );
   }
@@ -36,7 +42,8 @@ export class ArticleComponent implements OnInit {
   // php echo {{ }}
   // php include() === <app-article></app-article>
 
-  constructor() { }
+  constructor() { 
+  }
 
   ngOnInit(): void {
   }

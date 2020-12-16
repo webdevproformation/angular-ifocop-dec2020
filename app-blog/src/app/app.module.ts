@@ -6,6 +6,8 @@ import { PremierComponent } from './premier.component';
 import { DeuxiemeComponent } from './deuxieme.component';
 import { ListeComponent } from './liste/liste.component';
 import { ArticleComponent } from './article/article.component';
+import { CategoriesService } from "./services/categories.service" ;
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ArticleComponent } from './article/article.component';
   imports: [
   BrowserModule
   ],
-  providers: [],
+  providers: [
+    CategoriesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
