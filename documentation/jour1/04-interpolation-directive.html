@@ -4,7 +4,7 @@ ng g c liste
 
 app.component.html ajouter la balise <app-liste></app-liste> 
 
----------- 
+----------
 
 modifier un peu le fichier liste.component.ts
 
@@ -21,5 +21,115 @@ export class ListeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+}
+
+
+// https://github.com/webdevproformation/angular-ifocop-dec2020
+
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-liste',
+  template: `
+    <div>
+      <p>{{ presentation }}</p>
+      <p>{{ date }}</p>
+      <ul>
+        <li>{{ matieres[0] }}</li>
+        <li>{{ matieres[1] }}</li>
+        <li>{{ matieres[2] }}</li>
+      </ul>
+      <!-- Alain habite au 76 bd du Paradis à Paris -->
+      <p> {{ objet.nom }} habite au {{ objet.adresse.rue }} à {{ objet.adresse.ville  }}  </p>
+      <p> {{ objet.nom + " habite au " + objet.adresse.rue + "  à " + objet.adresse.ville }}</p>
+      <p> {{ description() }}</p>
+      <ul>
+        <li *ngFor="let jour of jours" class="">{{ jour }}</li>
+      </ul>
+    </div>
+  `,
+  styleUrls: ['./liste.component.css']
+})
+export class ListeComponent implements OnInit {
+
+  jours : Array<string> = [ "lundi", "mardi" , "mercredi" ];
+  // Angular dispose Directive 
+  // attribut pour les balises spécifiques à Angular
+  /** 
+   * ES6 pour parcourir un tableau 
+   * for (let jour of jours){ }
+   * *ngIf=""
+   * ngClass NgStyle ngModel 
+  */
+
+  presentation : string = "je découvre les interpolations";
+  date : string = "16/12/2020";
+  matieres : Array<string> = [ "js" , "jquery", "Angular"];
+  objet : any = { 
+    id : 1,
+    nom : "Alain",
+    age : 12,
+    adresse : {
+      rue : "76 bd du Paradis",
+      cp : 75000,
+      ville : "Paris"
+    }
+   }
+   description() : string {
+     // Alain a 12 ans
+     let html = `${ this.objet.nom } a ${this.objet.age} ans`;
+     // hardware
+    return html; 
+   }
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }
+
+// pause déjeuner rdv dans 1h => 13h42 
+// bonne appétit => 
+// composant
+// interpolation
+// directive *ngFor 
+// service 
+// injection de dépendance
+
+// bon appétit 
+
+// hello hello !!!!!!!!!!!!!!!!!!! 
+
+
+// cas pratique créer un nouveau composant Article  (via le terminal)
+
+<!-- div>(h2>{hello})+(time>{dt})+(p>lorem5)+ul>li*5>{item $} -->
+<div>
+  <h2>hello</h2>
+  <time>dt</time>
+  <p>Lorem ipsum dolor sit amet.</p>
+  <ul>
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+    <li>item 4</li>
+    <li>item 5</li>
+  </ul>
+</div>
+
+dans la class plusieurs variables 
+title = hello
+time = 20/02/2020
+p = Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti minus iusto ab vero deserunt blanditiis eius vel, repudiandae animi quod rerum fugit voluptatibus culpa dignissimos. Explicabo animi fugit vero earum.
+(dans la vue n'afficher que les 5 premiers mots)
+tab = [
+  item1,
+  item2,
+  item3,
+  item4,
+  item5
+]
+
+

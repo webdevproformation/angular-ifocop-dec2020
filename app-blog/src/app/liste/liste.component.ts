@@ -15,11 +15,25 @@ import { Component, OnInit } from '@angular/core';
       <p> {{ objet.nom }} habite au {{ objet.adresse.rue }} à {{ objet.adresse.ville  }}  </p>
       <p> {{ objet.nom + " habite au " + objet.adresse.rue + "  à " + objet.adresse.ville }}</p>
       <p> {{ description() }}</p>
+      <ul>
+        <li *ngFor="let jour of jours" class="">{{ jour }}</li>
+      </ul>
     </div>
   `,
   styleUrls: ['./liste.component.css']
 })
 export class ListeComponent implements OnInit {
+
+  jours : Array<string> = [ "lundi", "mardi" , "mercredi" ];
+  // Angular dispose Directive 
+  // attribut pour les balises spécifiques à Angular
+  /** 
+   * ES6 pour parcourir un tableau 
+   * for (let jour of jours){ }
+   * *ngIf=""
+   * ngClass NgStyle ngModel 
+  */
+
   presentation : string = "je découvre les interpolations";
   date : string = "16/12/2020";
   matieres : Array<string> = [ "js" , "jquery", "Angular"];
@@ -40,7 +54,6 @@ export class ListeComponent implements OnInit {
     return html; 
    }
 
-
   constructor() { }
 
   ngOnInit(): void {
@@ -59,4 +72,6 @@ export class ListeComponent implements OnInit {
 // bon appétit 
 
 // hello hello !!!!!!!!!!!!!!!!!!! 
+
+
 
