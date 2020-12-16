@@ -13,8 +13,8 @@ import { ArticlesService } from './services/articles.service';
         <article *ngFor="let article of articles">
             <h2>{{ article.company }}</h2>
             <p>{{ article.about }}</p>
-            <ul>
-                <li *ngFor="let tag of article.tags">{{ tag }}</li>
+            <ul class="d-flex list-inline">
+                <li *ngFor="let tag of article.tags" class="mr-3 badge badge-success">{{ tag }}</li>
             </ul>
         </article>
     </div>

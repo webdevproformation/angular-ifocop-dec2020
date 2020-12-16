@@ -20,3 +20,9 @@ dans ce dossier => les fichiers sources de bootstrap
 ],
 
 ng serve -o
+
+// modifier l'aspect du composant deuxieme
+
+<ul class="d-flex list-inline">
+    <li *ngFor="let tag of article.tags" class="mr-3 badge badge-success">{{ tag }}</li>
+</ul>
