@@ -103,7 +103,7 @@ export class ListeComponent implements OnInit {
 // hello hello !!!!!!!!!!!!!!!!!!! 
 
 
-// cas pratique créer un nouveau composant Article  (via le terminal)
+// cas pratique créer un nouveau composant article  (via le terminal)
 
 <!-- div>(h2>{hello})+(time>{dt})+(p>lorem5)+ul>li*5>{item $} -->
 <div>
@@ -123,6 +123,8 @@ dans la class plusieurs variables
 title = hello
 time = 20/02/2020
 p = Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti minus iusto ab vero deserunt blanditiis eius vel, repudiandae animi quod rerum fugit voluptatibus culpa dignissimos. Explicabo animi fugit vero earum.
+// subtring()
+// => tableau => prendre
 (dans la vue n'afficher que les 5 premiers mots)
 tab = [
   item1,
@@ -131,5 +133,82 @@ tab = [
   item4,
   item5
 ]
+
+ng g c article
+
+afficher dans le vue root => app.component.html <app-article></app-article>
+
+modifier la vue du composant 
+deux possibilités  => 
+
+1 modifier la propriété templateUrl => template 
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-article',
+  template: ``,
+  styleUrls: ['./article.component.css']
+})
+export class ArticleComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+
+2 modifier le contenu du fichier article.component.html 
+
+
+
+-------------------------------- 
+
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-article',
+  template: `<div>
+            <h2>{{ titre }}</h2>
+            <time>{{ dt }}</time>
+            <p>{{ premiersMot(27) }}</p>
+            <p>{{ premiersMot2(5) }}</p>
+            <ul>
+              <li *ngFor="let item of tab">{{ item }}</li>
+            </ul>
+          </div>`,
+  styleUrls: ['./article.component.css']
+})
+export class ArticleComponent implements OnInit {
+  titre : string = "premier article" ;
+  dt : string = "20/02/2020";
+  p :string = "Lorem ipsum doleozirhezoiho fejzior sit amet consectetur adipisicing elit. Corrupti minus iusto ab vero deserunt blanditiis eius vel, repudiandae animi quod rerum fugit voluptatibus culpa dignissimos. Explicabo animi fugit vero earum.";
+  tab : Array<string> = [
+    "item1",
+    "item2",
+    "item3",
+    "item4",
+    "item5"
+  ];
+  premiersMot( nbLettre : number ) : string {
+    return this.p.substring( 0 , nbLettre );
+  }
+  // utiliser les tableaux 
+  premiersMot2( nbMots : number ) : string {
+    let textTab = this.p.split( " " ).slice( 0 ,  nbMots);
+    return textTab.join(" ");
+  }
+  // document.getElementById("h1").innerHTML = titre
+  // php echo {{ }}
+  // php include() === <app-article></app-article>
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
 
 
