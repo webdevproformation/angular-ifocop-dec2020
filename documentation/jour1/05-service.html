@@ -147,3 +147,41 @@ export class PremierComponent{
 
 }
 
+// café => rdv dans 15 min 15h51 
+// bon café 
+// injection de dépendance 
+
+// chapitre suivante données et événements 
+
+// créer des services via les lignes de commande 
+
+ng g s services/articles
+
+il crée bien une class en + il ajoute un décorateur 
+
+@Injectable({
+    providedIn: 'root'
+})
+
+// ce décorateur permet de sauter l'étape de déclaration dans le fichier app.module.ts 
+
+import et déclarer le service 
+
+providers: [
+    CategoriesService,
+    DataService
+],
+
+// service => partager des données entre les composants 
+// manipuler les données => CRUD = 
+
+CRUD  :
+Create
+Read  => getAll()
+Update
+Delete 
+
+// appeler une base de données extérieures 
+// service pour envoyer des emails 
+
+// 
