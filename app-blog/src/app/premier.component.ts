@@ -19,8 +19,11 @@ import { DataService } from "./services/data.service";
 })
 export class PremierComponent{ 
 
-    donnees : any = (new DataService()).getAll();
-
+    //donnees : any = (new DataService()).getAll();
+    donnees : any ;
+    constructor( private data : DataService  ){
+        this.donnees = this.data.getAll();
+    }
 }
 // maintenant que le composant est créé 
 // afficher à l'écran 

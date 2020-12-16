@@ -10,6 +10,8 @@ import { Component } from '@angular/core';
             <li>déclarer le composant</li>
             <li>utiliser le composant</li>
         </ul>
+        <article>
+        <article>
     </div>
     `
 })

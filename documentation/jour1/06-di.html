@@ -1,0 +1,60 @@
+di Dependency Injection 
+id = Injection de Dépendance 
+
+---------------------- 
+
+lorsque vous utilisez un service dans un composant 
+
+import { DataService } from "./services/data.service";
+
+variable = (new DataService()).method() ;
+
+variable => utiliser dans la vue en fait une boucle 
+
+---------------------- 
+
+ça fonctionne MAIS liaison / dépendance entre le composant et le service 
+si vous modifiez le constructeur du service 
+il faudra aussi modifier le (new DataService()).method() dans votre composant 
+
+dans Angular => injection de dépendance  
+
+on va un peu modifier la manière d'appeler les Services dans les composants 
+
+je vais dans le composant premier.component.ts 
+
+
+export class PremierComponent{ 
+
+    //donnees : any = (new DataService()).getAll();
+    donnees : any ;
+    constructor( private data : DataService  ){
+        this.donnees = this.data.getAll();
+    }
+}
+
+// cas pratique pouvoir utiliser la di via le services articles dans le composant deuxieme 
+
+// modifier la vue du composant 
+pour afficher le texte 
+
+<div>
+    <h2>mon deuxième composant</h2>
+    <ul>
+        <li>créer le composant</li>
+        <li>déclarer le composant</li>
+        <li>utiliser le composant</li>
+    </ul>
+    <article> 
+            <h2>company</h2>
+            <p>about</p>
+            <ul>
+                <li>tag</li>
+                <li>tag</li>
+                <li>tag</li>
+                <li>tag</li>
+            </ul>
+    <article>
+</div>
+
+répéter la balise article autant de fois que vous avez d'item dans votre service 
