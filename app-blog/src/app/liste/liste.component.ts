@@ -36,6 +36,7 @@ export class ListeComponent implements OnInit {
    description() : string {
      // Alain a 12 ans
      let html = `${ this.objet.nom } a ${this.objet.age} ans`;
+     // hardware
     return html; 
    }
 
