@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { ArticlesService } from './services/articles.service';
 @Component({
     selector : "deuxieme",
     template : `
@@ -10,9 +10,19 @@ import { Component } from '@angular/core';
             <li>déclarer le composant</li>
             <li>utiliser le composant</li>
         </ul>
-        <article>
-        <article>
+        <article *ngFor="let article of articles">
+            <h2>{{ article.company }}</h2>
+            <p>{{ article.about }}</p>
+            <ul>
+                <li *ngFor="let tag of article.tags">{{ tag }}</li>
+            </ul>
+        </article>
     </div>
     `
 })
-export class DeuxiemeComponent{}
+export class DeuxiemeComponent{ 
+    articles : any ;
+    constructor ( private data : ArticlesService){
+        this.articles = this.data.getAll();
+    }
+}
