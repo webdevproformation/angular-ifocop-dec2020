@@ -3,6 +3,7 @@
 // fin de la création de notre premier composant 
 
 import { Component } from '@angular/core';
+import { DataService } from "./services/data.service";
 
 @Component({
     selector : "premier",
@@ -10,10 +11,17 @@ import { Component } from '@angular/core';
         <div>
             <h2>mon premier composant</h2>
             <p>je viens de créer un composant à la main</p>
+            <ul>
+                <li *ngFor="let item of donnees">{{ item.id }} {{item.nom}} a {{ item.age }}</li>
+            </ul>
         </div>
     `
 })
-export class PremierComponent{ }
+export class PremierComponent{ 
+
+    donnees : any = (new DataService()).getAll();
+
+}
 // maintenant que le composant est créé 
 // afficher à l'écran 
 
@@ -25,7 +33,8 @@ export class PremierComponent{ }
 // réaliser les modifications suivantes dans ce fichier 
 
 // import { PremierComponent } from './premier.component';
-/*
+/*import { DataService } from './services/data.service';
+
  * declarations: [
     AppComponent ,
     PremierComponent

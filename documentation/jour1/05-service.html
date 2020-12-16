@@ -93,3 +93,57 @@ retourner un tableau
 2 utiliser ce service dans le composant <premier></premier> 
 => importer et faire une boucle 
 <p> id nom a age </p>
+
+// créer le fichier services/data.service.ts 
+
+export class DataService {
+    getAll<T> (){ // généricité 
+        return [
+            { 
+                id : 1 ,
+                nom : "Alain",
+                age : 23
+            },
+            {
+                id : 2 ,
+                nom : "Béatrice",
+                age : 12
+            }
+        ]        
+    }
+}
+
+// déclarer mon service 
+
+app.module.ts
+
+import { DataService } from './services/data.service';
+
+providers: [
+CategoriesService,
+DataService
+],
+
+// utiliser ce service dans le composant premier  
+
+import { Component } from '@angular/core';
+import { DataService } from "./services/data.service";
+
+@Component({
+    selector : "premier",
+    template : `
+        <div>
+            <h2>mon premier composant</h2>
+            <p>je viens de créer un composant à la main</p>
+            <ul>
+                <li *ngFor="let item of donnees">{{ item.id }} {{item.nom}} a {{ item.age }}</li>
+            </ul>
+        </div>
+    `
+})
+export class PremierComponent{ 
+
+    donnees = (new DataService()).getAll();
+
+}
+

@@ -28,7 +28,7 @@ export class ArticleComponent implements OnInit {
     "item4",
     "item5"
   ];
-  categories : any = (new CategoriesService()).getAll()
+  categories = (new CategoriesService()).getAll()
 
   premiersMot( nbLettre : number ) : string {
     return this.p.substring( 0 , nbLettre );

@@ -7,6 +7,7 @@ import { DeuxiemeComponent } from './deuxieme.component';
 import { ListeComponent } from './liste/liste.component';
 import { ArticleComponent } from './article/article.component';
 import { CategoriesService } from "./services/categories.service" ;
+import { DataService } from './services/data.service';
 
 
 @NgModule({
@@ -18,10 +19,12 @@ import { CategoriesService } from "./services/categories.service" ;
     ArticleComponent
   ],
   imports: [
-  BrowserModule
+  
+BrowserModule
   ],
   providers: [
-    CategoriesService
+    CategoriesService,
+    DataService
   ],
   bootstrap: [AppComponent]
 })
