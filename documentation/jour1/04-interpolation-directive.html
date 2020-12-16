@@ -1,0 +1,25 @@
+créer un nouveau composant liste (via le terminal)
+
+ng g c liste 
+
+app.component.html ajouter la balise <app-liste></app-liste> 
+
+---------- 
+
+modifier un peu le fichier liste.component.ts
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-liste',
+  template: ``,
+  styleUrls: ['./liste.component.css']
+})
+export class ListeComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}

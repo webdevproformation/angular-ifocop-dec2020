@@ -1,0 +1,93 @@
+la page que vous êtes en train de regarder 
+
+généré dans le fameux dossier src 
+
+dans ce dossier  
+    app => dans ce dossier que l'on va travailler beaucoup 
+
+    assets => logo / pdf / svg / png  jpg 
+
+    environnement => variable d'environnement distinguer entre version de prod et un version de développement 
+
+    favicon => icone de barre de favoris 
+
+    index.html ( la SEULE page html de tout le projet )
+        structure de page html simple 
+         dans la balise body <app-root></app-root>
+
+        Angular va injecter HTML , css , js dans la balise <app-root></app-root> pour toutes les pages de votre site internet  
+    lancer l'inspecteur  <app-root></app-root> 
+
+    main.ts (va pas le modifier )
+    liaison entre le fichier index.html <=> les fichiers .ts 
+
+    style.css => permettre de mettre en forme notre projet en global 
+
+    test.ts => réalise de test en global 
+
+
+------------------------ 
+
+
+passer 99% de notre temps dans le dossier src 
+dans ce dossier il y a le dossier app 
+
+app.component.css 
+app.component.ts 
+app.component.spec.ts
+app.component.html
+
+=> Composent ( component )
+
+app.module.ts (le fichier le chef d'orchestre de notre application Angular)
+
+
+--------------------- 
+
+tout le temps => src/app 
+éviter app.component.html 
+
+--------------------- 
+
+src/app/app.component.html => Ctrl + A et vous supprimer 
+
+à la place vous allez écrire la balise suivante <h1>Jour1</h1>
+Ctrl + S
+
+http://localhost:4200/
+
+--------------------- 
+
+dans angular composant => en charge d'afficher des blocs / partie d'une page web 
+
+src/app/app.component.ts 
+
+// import une fonction Component stockée dans le dossier node_modules 
+import { Component } from '@angular/core';
+
+// Component est un Décorateur de la class AppComponent
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+    title :string = 'app-blog';
+    sousTitre :string = "jour 1";
+    // sousTitre => camelCase 
+    // sous_titre => pascal_case
+}
+
+ce fichier app.component.ts => relation directe avec le fichier 
+app.component.html
+
+remplace 
+<h1>Jour1</h1>
+
+<h1>{{ sousTitre }}</h1>
+ts => modele // controller
+app.component.html => vue 
+
+MVC 
+
+// rdv dans 15 min = 10h51 bon café @ toute suite 

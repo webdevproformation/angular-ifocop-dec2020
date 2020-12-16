@@ -1,0 +1,206 @@
+Angular est un outil qui permet de créer des sites internet 
+UI = User Interface  
+
+------------------- 
+
+=> composé de Composant (component)
+
+brique de base de Angular 
+
+votre site internet va être découpé en plein de petits composants 
+
+// dans le support de cours => fin du 1er chapitre 
+
+// ouvre le 2ème chapitre => les fondamentaux 
+
+Composant 
+    - data => données que l'on veut afficher à l'écran 
+    - template (mise en page)
+    - Logique 
+
+dans le dossier src/app  
+
+par défaut (lors de l'installation) => angular va créer un composant de base 
+
+app.component.css ( vue )
+app.component.html ( vue )
+app.component.ts ( appeler les données + Logique )
+app.component.spec.ts 
+
+---------- 
+
+header.component.ts
+footer.component.ts
+sidebar.component.ts
+main.component.ts
+
+------- 
+
+app.component.ts => composant racine / composant root 
+    header.component.ts
+    footer.component.ts
+    sidebar.component.ts
+    main.component.ts
+
+------- 
+
+nous allons créer notre premier composant 
+contenu de notre composant :
+
+<div>
+    <h2>Mon premier composant</h2>
+    <p>je viens de créer un composant à la main</p>
+</div>
+
+afficher dans notre page web http://localhost:4200/
+
+<h1>foeofh</h1>
+COMPOSANT  
+
+------ 
+
+deux manières de créer des composants 
+
+1 manuel => comprendre 
+2 en utilisant l'outil en ligne de commande ng ... 
+
+
+------- 
+
+dans le dossier src/app créer un fichier 
+premier.component.ts 
+
+
+// transformer la class en un vrai composant Angular
+// décorer notre class avec un décoration Component
+// fin de la création de notre premier composant 
+
+import { Component } from '@angular/core';
+
+@Component({
+    selector : "premier",
+    template : `
+        <div>
+            <h2>mon premier composant</h2>
+            <p>je viens de créer un composant à la main</p>
+        </div>
+    `
+})
+export class PremierComponent{ }
+// maintenant que le composant est créé 
+// afficher à l'écran 
+
+// 3 choses à faire :
+
+// 1 export devant la class => utiliser dans un autre fichier 
+// 2 déclarer le composant dans notre application
+//     app.module.ts 
+// réaliser les modifications suivantes dans ce fichier 
+
+// import { PremierComponent } from './premier.component';
+/*
+ * declarations: [
+    AppComponent ,
+    PremierComponent
+  ]
+ */
+
+// 3 utiliser mon composant 
+// dans le fichier app.component.html 
+// ajouter à la fin la balise suivante <premier></premier>
+
+// http://localhost:4200/
+
+
+// cas pratique :
+
+pouvez vous créer le composant deuxieme (manuellement)
+
+ce composant contient le html suivant 
+<div>
+    <h2>mon deuxième composant</h2>
+    <ul>
+        <li>créer le composant</li>
+        <li>déclarer le composant</li>
+        <li>utiliser le composant</li>
+    </ul>
+</div>
+
+afficher ce composant à la suite du composant premier 
+
+// composant via l'outil en ligne de commande 
+
+ng generate component troisieme
+ng g c troisieme 
+
+
+attention vous avez un terminale qui est en train travailler 
+
+ng serve -o 
+
+il faut le laisser tranquille et surtout ne pas le fermer 
+si vous le fermer éteindre le serveur 
+
+cliquer sur le + => ouvrir un deuxième terminal 
+
+cd app-blog
+ng g c troisieme 
+30 s 
+
+CREATE src/app/troisieme/troisieme.component.html (24 bytes)
+CREATE src/app/troisieme/troisieme.component.spec.ts (647 bytes)
+CREATE src/app/troisieme/troisieme.component.ts (287 bytes)     
+CREATE src/app/troisieme/troisieme.component.css (0 bytes)      
+UPDATE src/app/app.module.ts (566 bytes)
+
+Créer 4 fichiers + modifie le fichier app.module.ts 
+
+
+il nous reste juste 1 étape => utiliser le composant dans app.component.html 
+
+
+cas pratique :
+via le terminal créer un nouveau composant quatrieme 
+
+pouvez vous afficher le composant quatrieme juste en dessous du composant troisieme 
+
+ng g c quatrieme 
+
+app.component.html => ajouter une balise <app-quatrieme></app-quatrieme>
+
+
+--------  
+
+supprimer un composant ???? 
+
+je me suis trompé dans le nom / j'ai fais une fausse manipulation 
+
+=> je veux supprimer mon composant 
+
+pour supprimer il n'existe pas de commande => qu'à la main que l'on peut supprimer un composant 
+
+=> je dois faire le chemin inverse 
+
+=> 1 app.component.html => supprimer la balise 
+=> 2 app.module.ts => supprimer 2 choses 
+    déclaration
+    import 
+=> 3 supprimer tous les fichiers du composant 
+    supprimer le dossier quatrieme 
+
+--------------------- 
+
+cas pratique : pouvez vous supprimer le composant troisieme ? 
+
+
+--------------------- 
+
+04-interpolation-directive.html
+
+
+
+
+
+
+
+
