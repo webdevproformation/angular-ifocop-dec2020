@@ -11,6 +11,8 @@ import { OngletComponent } from './onglet/onglet.component';
 import { AccordeonComponent } from './accordeon/accordeon.component';
 import { ParentComponent } from './parent/parent.component';
 import { EnfantComponent } from './enfant/enfant.component';
+import { AuteurComponent } from './auteur/auteur.component';
+import { LikeComponent } from './like/like.component';
 
 
 @NgModule({
@@ -24,7 +26,9 @@ import { EnfantComponent } from './enfant/enfant.component';
     OngletComponent,
     AccordeonComponent,
     ParentComponent,
-    EnfantComponent 
+    EnfantComponent,
+    AuteurComponent,
+    LikeComponent 
   ],
   imports: [
 BrowserModule
