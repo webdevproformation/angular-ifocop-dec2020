@@ -1,0 +1,68 @@
+support :
+https://formation.webdevpro.net/angular/
+login : angular
+mdp : angular
+
+------------------------------------------------ 
+
+partage des notes de cours : 
+
+https://github.com/webdevproformation/angular-ifocop-dec2020
+
+
+le serveur local ??? 
+
+quand tu es en train de travailler sur Angular en local 
+démarrer un serveur local (serveur de développement)
+
+1 accéder au terminal
+
+2 il faut être dans le dossier du projet => app-blog 
+cd app-blog 
+
+cd C:\Users\HP\Desktop\angular-ifocop\app-blog
+
+3 saisir la commande suivante : ng serve -o 
+
+4 rouge => bug 
+
+1 src/app/app.component.html 
+2 src/app/app.module.ts 
+
+=> dichotomie 
+
+---------------------------------- 
+
+réinitialiser notre projet 
+
+dans le dossier src/app => créer un dossier jour1
+
+----------------------- 
+
+réinitialiser le fichier app.module.ts 
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+@NgModule({
+  declarations: [
+    AppComponent 
+  ],
+  imports: [
+BrowserModule
+  ],
+  providers: [
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+----------------------- 
+app.component.html
+
+<div class="container">
+    <h2>Jour2</h2>
+</div>
+
+01-property.binding.html 
+
+
