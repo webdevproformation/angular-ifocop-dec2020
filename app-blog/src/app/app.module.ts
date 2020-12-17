@@ -7,6 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { BoutonComponent } from './bouton/bouton.component';
 import { HeroComponent } from './hero/hero.component';
 import { CompteurComponent } from './compteur/compteur.component';
+import { OngletComponent } from './onglet/onglet.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CompteurComponent } from './compteur/compteur.component';
     MenuComponent,
     BoutonComponent,
     HeroComponent,
-    CompteurComponent 
+    CompteurComponent,
+    OngletComponent 
   ],
   imports: [
 BrowserModule
