@@ -6,6 +6,7 @@ import { ArticleComponent } from './article/article.component';
 import { MenuComponent } from './menu/menu.component';
 import { BoutonComponent } from './bouton/bouton.component';
 import { HeroComponent } from './hero/hero.component';
+import { CompteurComponent } from './compteur/compteur.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { HeroComponent } from './hero/hero.component';
     ArticleComponent,
     MenuComponent,
     BoutonComponent,
-    HeroComponent 
+    HeroComponent,
+    CompteurComponent 
   ],
   imports: [
 BrowserModule

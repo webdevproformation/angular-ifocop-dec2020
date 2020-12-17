@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-menu',
   template: `
-  <nav class="navbar navbar-expand navbar-light bg-light">
+  <nav class="navbar navbar-expand navbar-light bg-light w-100">
       <img [src]="url" alt="" class="navbar-brand img-thumbnail">
       <ul class="navbar-nav ml-auto">
           <li *ngFor="let m of menu" class="nav-item">

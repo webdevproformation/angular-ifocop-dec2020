@@ -25,7 +25,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hero.component.css']
 })
 export class HeroComponent implements OnInit {
-  url : string = "https://via.placeholder.com/300x200?text=paysage"
+  url : string = "https://via.placeholder.com/300x200?text=paysage" ;
 
   article1 = {
     btnFond : "red",
@@ -37,10 +37,17 @@ export class HeroComponent implements OnInit {
     isBig : true
   }
 
-
   constructor() { }
 
   ngOnInit(): void {
   }
 
 }
+
+// rdv 13h39 bon appétit
+
+// phase d'apprentissage 
+// http://localhost:4200/
+// http://localhost:8888/
+// http://test.fr:8888/
+
