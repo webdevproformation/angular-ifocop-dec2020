@@ -13,7 +13,7 @@ import { Component, OnInit } from '@angular/core';
     <button 
       data-index="1" 
       (click)="onClickOnglet($event)"
-      class="btn btn-info btn-sm ml-3  mb-2">onglet 2</button>
+      class="btn btn-info btn-sm ml-3 mb-2">onglet 2</button>
     <div [ngClass]="{
       'd-none' : onglets[0]
     }" class="border border-secondary p-3 rounded">

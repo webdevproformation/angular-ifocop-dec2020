@@ -150,3 +150,31 @@ export class OngletComponent implements OnInit {
   ngOnInit(): void {
   }
 }
+
+
+// cas pratique créer un nouveau composant accordeon 
+<ul>
+    <li>
+        <button data-index="0">item 1</button>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </li>
+    <li>
+        <button data-index="1">item 2</button>
+        <p>Corporis non ex tempore vitae?</p>
+    </li>
+    <li>
+        <button data-index="2">item 3</button>
+        <p>Numquam culpa quaerat nihil ipsa.</p>
+    </li>
+    <li>
+        <button data-index="3">item 4</button>
+        <p>Odio veritatis doloremque obcaecati fuga.</p>
+    </li>
+</ul>
+par défaut seul le p en dessous du 1er bouton est afficher les autres sont masqués
+si je clique sur le 1er bouton affiche le p en dessous et masque les autres p
+si je clique sur le 2eme bouton affiche le p en dessous et masque les autres p
+si je clique sur le 3ème bouton affiche le p en dessous et masque les autres p
+si je clique sur le 4ème bouton affiche le p en dessous et masque les autres p
+
+Bonus utiliser bootstrap pour styliser ce composant 
