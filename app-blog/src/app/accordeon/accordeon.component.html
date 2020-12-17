@@ -1,0 +1,31 @@
+<ul class="list-group my-3">
+    <li class="list-group-item">
+        <button 
+            data-index="0" 
+            data-color="red"
+            data-titre="un titre"
+            (click)="onClickShow($event)" 
+            class="btn btn-outline-dark btn-sm mb-2">item 1</button>
+        <p [ngClass]="{ 'd-none': accordeon[0] }">Lorem ipsum dolor sit amet.</p>
+    </li>
+    <li class="list-group-item">
+        <button data-index="1" (click)="onClickShow($event)" class="btn btn-outline-dark btn-sm mb-2">item 2</button>
+        <p [ngClass]="{ 'd-none': accordeon[1] }">Corporis non ex tempore vitae?</p>
+    </li>
+    <li class="list-group-item">
+        <button data-index="2" (click)="onClickShow($event)" class="btn btn-outline-dark btn-sm mb-2">item 3</button>
+        <p [ngClass]="{ 'd-none': accordeon[2] }">Numquam culpa quaerat nihil ipsa.</p>
+    </li>
+    <li class="list-group-item">
+        <button 
+            data-index="3" 
+            data-color="#ffabe1"
+            (click)="onClickShow($event)" class="btn btn-outline-dark btn-sm mb-2">item 4</button>
+        <p [ngClass]="{ 'd-none': accordeon[3] }">Odio veritatis doloremque obcaecati fuga.</p>
+    </li>
+</ul>
+
+<p data-text="un texte" data-font-size="20px" data-font-weight="bold">
+
+</p>
+<!--  relation entre les composants 15h56 bon café !!!!!!   -->

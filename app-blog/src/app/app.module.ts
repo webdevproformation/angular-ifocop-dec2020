@@ -8,6 +8,7 @@ import { BoutonComponent } from './bouton/bouton.component';
 import { HeroComponent } from './hero/hero.component';
 import { CompteurComponent } from './compteur/compteur.component';
 import { OngletComponent } from './onglet/onglet.component';
+import { AccordeonComponent } from './accordeon/accordeon.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { OngletComponent } from './onglet/onglet.component';
     BoutonComponent,
     HeroComponent,
     CompteurComponent,
-    OngletComponent 
+    OngletComponent,
+    AccordeonComponent 
   ],
   imports: [
 BrowserModule
