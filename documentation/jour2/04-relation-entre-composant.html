@@ -1,0 +1,37 @@
+créer un composant 
+
+class 
+et 
+html 
+
+variable dans la class => synchronisée avec la vue (html)
+    {{ }}
+    propertybinding [ ]=""
+    style binding [style.color]=""
+    ngClass="{}"
+
+créer de événement dans le html => appeler le class (méthode) => variable => html
+
+    (event)="methode()"    =>   methode(){}
+    (event)="methode($event)"   => methode($event)
+
+----------------- 
+Envoyer des informations du composant parent vers le composant enfant 
+ng g c parent 
+    donnée = { param1: "info" , param2:"info" }
+    html => <app-enfant [info]="donnée.param1" ></app-enfant>
+
+ng g c enfant 
+    récupérer la données qui envoyée depuis le parent 
+
+------------ 
+
+Envoyer des informations de l'enfant vers le parent 
+
+app.component.html => <app-parent></app-parent>
+
+parent.component.ts 
+
+// créer un composant auteur 
+// ce composant est une enfant de parent il va lui envoyer la donnée auteur 
+// dans le composant auteur récupérer la donnée et l'afficher dans une balise p class badge badge-primary 

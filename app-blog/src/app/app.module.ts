@@ -9,6 +9,8 @@ import { HeroComponent } from './hero/hero.component';
 import { CompteurComponent } from './compteur/compteur.component';
 import { OngletComponent } from './onglet/onglet.component';
 import { AccordeonComponent } from './accordeon/accordeon.component';
+import { ParentComponent } from './parent/parent.component';
+import { EnfantComponent } from './enfant/enfant.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { AccordeonComponent } from './accordeon/accordeon.component';
     HeroComponent,
     CompteurComponent,
     OngletComponent,
-    AccordeonComponent 
+    AccordeonComponent,
+    ParentComponent,
+    EnfantComponent 
   ],
   imports: [
 BrowserModule
