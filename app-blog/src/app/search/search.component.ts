@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Output , EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -20,10 +20,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+  @Output() search = new EventEmitter();
+
   onSubmitSearch(f){
     // récupérer les valeurs saisies du formation
     console.log(f.value);
 
+    this.search.emit(f.value.search);
     // appeler un service => recherche dans une base de données 
     // appeler un autre service => stocker dans une table ce qui a été saisie 
 

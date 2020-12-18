@@ -1,4 +1,4 @@
-import { Component , ViewChild } from '@angular/core';
+import { Component , Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-menu',
   template: `
@@ -13,8 +13,7 @@ import { Component , ViewChild } from '@angular/core';
             </a>
           </li>
         </ul>
-        <app-search></app-search>
-        <p data-info="valeur" #tt></p>
+        <app-search (search)="onSearch($event)"></app-search>
       </nav>
     </div>
   `,
@@ -24,13 +23,11 @@ export class MenuComponent {
   url : string = "https://via.placeholder.com/60x40?text=jour3";
   menu : Array<string> = ["Accueil","Articles", "Connexion"];
 
-  @ViewChild('tt') paragraphe;
+  @Output() search = new EventEmitter();
 
-  ngAfterViewInit(){
-    console.log(this.paragraphe.nativeElement.dataset.info);
-  }
-
-  onLoadP($event){
-    console.log($event.target.dataset.info);
+  onSearch($event){
+    console.log("dans le composant menu")
+    console.log( $event )
+    this.search.emit( $event );
   }
 }
