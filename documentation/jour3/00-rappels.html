@@ -51,3 +51,70 @@ glisser dans le dossier jour2
 logo et les liens suivants : Accueil / article / connexion 
 vous utiliserez Bootstrap pour le styliser 
 
+------------------------------------ 
+
+le rôle de Connexion ? 
+
+page => formulaire => login / mot de passe => 
+remplir le formulaire et valide
+
+=> vérifier que les informations sont correctes  | json 
+
+// stocker localstorage token ok 
+
+--------------- 
+
+=> back office formulaire => CRUD des articles 
+
+Créer une base de données de test :
+
+// Firebase => back office 
+// https://jsonplaceholder.typicode.com/
+// https://www.json-generator.com/
+
+ng g c menu 
+
+ajouter dans app.component.html 
+
+modifier le fichier .ts du menu 
+
+
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-menu',
+  template: `
+    <div class="row">
+      <nav class="navbar navbar-expand bg-dark navbar-dark col-12">
+        <img [src]="url" alt="" class="navbar-brand img-thumbnail">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item" *ngFor="let m of menu">
+            <a href="" class="nav-link">
+              {{ m }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  `
+})
+export class MenuComponent {
+  url : string = "https://via.placeholder.com/60x40?text=jour3";
+  menu : Array<string> = ["Accueil","Articles", "Connexion"];
+}
+
+
+// div <=> zone de design => row  
+    nav 
+        col-12 => la ligne complète de design 
+        navbar navbar-expand bg-dark navbar-dark => styliser le menu 
+            navbar => barre de menu 
+            navbar-expand => responsive design
+            bg-dark => le fond de couleur noir 
+            navbar-dark => texte couleur du texte 
+        img  => logo => navbar-brand 
+        ul  => navbar-nav  
+               ml-auto => caler les élements du menu à droite 
+          li => nav-item 
+            a  => nav-link 
+
+01-forms.html
