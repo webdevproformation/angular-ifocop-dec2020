@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title :string = 'app-blog';
   sousTitre :string = "coucou les amis comment allez vous ???? ";
-  tttt : string ;
+  tttt : string = "*";
   // sousTitre => camelCase 
   // sous_titre => pascal_case
   onSearch($event){

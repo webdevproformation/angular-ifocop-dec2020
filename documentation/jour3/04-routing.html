@@ -1,0 +1,42 @@
+// juste créé un site 
+
+// 1 page 
+
+// créer une application multipages 
+
+// activer un module 
+// app.module.ts 
+
+import { RouterModule } from "@angular/router";
+
+et le déclarer dans les imports :
+imports: [
+    BrowserModule , 
+    FormsModule,
+    RouterModule.forRoot([])
+]
+
+// créer un composant contact 
+ng g c contact 
+
+// app.component.html 
+<router-outlet></router-outlet>
+=> jouer le rôle suivant  http://localhost:4200/contact => afficher le composant contact 
+
+// app.module.ts
+
+imports: [
+BrowserModule , 
+FormsModule,
+RouterModule.forRoot([
+        { path: "contact" , component : ContactComponent }
+    ])
+]
+
+// mettre à jour le menu 
+
+// modifier le composant menu.component.ts 
+
+// créer deux composants ng g c accueil && ng g c connexion
+
+// app.module.ts

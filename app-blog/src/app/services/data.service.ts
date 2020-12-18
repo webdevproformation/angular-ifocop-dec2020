@@ -7,6 +7,11 @@ export class DataService {
 
   search<T>( motRecherche: string ) {
       let resultat = []; // par défaut le résultat == rien == tableau vide 
+
+      if(motRecherche === "*"){
+        return this.getAll() ;
+      }
+
       this.getAll().forEach( function( item ){ 
         if( item.about.indexOf( motRecherche ) != -1 || item.company.indexOf(motRecherche)  != -1){
           resultat.push( item );
