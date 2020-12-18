@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , ViewChild } from '@angular/core';
 @Component({
   selector: 'app-menu',
   template: `
@@ -14,6 +14,7 @@ import { Component } from '@angular/core';
           </li>
         </ul>
         <app-search></app-search>
+        <p data-info="valeur" #tt></p>
       </nav>
     </div>
   `,
@@ -22,4 +23,14 @@ import { Component } from '@angular/core';
 export class MenuComponent {
   url : string = "https://via.placeholder.com/60x40?text=jour3";
   menu : Array<string> = ["Accueil","Articles", "Connexion"];
+
+  @ViewChild('tt') paragraphe;
+
+  ngAfterViewInit(){
+    console.log(this.paragraphe.nativeElement.dataset.info);
+  }
+
+  onLoadP($event){
+    console.log($event.target.dataset.info);
+  }
 }
