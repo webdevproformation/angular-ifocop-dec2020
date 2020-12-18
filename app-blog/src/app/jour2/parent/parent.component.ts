@@ -18,7 +18,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParentComponent implements OnInit {
   onChangeTitre(){
-    this.article.titre = this.article.titre + "💖";
+    this.article.titre = this.article.titre + " 💖";
   }
   article = { 
     titre : "article 1",

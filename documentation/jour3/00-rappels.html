@@ -1,0 +1,53 @@
+support :
+https://formation.webdevpro.net/angular/
+login : angular
+mdp : angular
+
+------------------------------------------------ 
+
+partage des notes de cours : 
+
+https://github.com/webdevproformation/angular-ifocop-dec2020
+
+
+----------------------- 
+
+dans le dossier app => créer le dossier jour2
+
+supprimer tous les composants dans app.component.html 
+
+<div class="container">
+    <h2>Jour3</h2>
+</div>
+
+réinitialiser le fichier app.module.ts 
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+BrowserModule
+  ],
+  providers: [
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+------------------ 
+
+tous les dossiers qui contiennent des composants / service 
+glisser dans le dossier jour2 
+
+
+=> Créer un composant menu 
+
+logo et les liens suivants : Accueil / article / connexion 
+vous utiliserez Bootstrap pour le styliser 
+
