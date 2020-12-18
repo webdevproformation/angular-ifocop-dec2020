@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
   selector: 'app-menu',
   template: `
     <div class="row">
+      <h2>Menu</h2>
       <nav class="navbar navbar-expand bg-dark navbar-dark col-12">
         <img [src]="url" alt="" class="navbar-brand img-thumbnail">
         <ul class="navbar-nav ml-auto">
@@ -15,7 +16,8 @@ import { Component } from '@angular/core';
         <app-search></app-search>
       </nav>
     </div>
-  `
+  `,
+  styleUrls: ['./menu.component.css']
 })
 export class MenuComponent {
   url : string = "https://via.placeholder.com/60x40?text=jour3";

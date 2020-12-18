@@ -1,0 +1,22 @@
+.navbar{
+    border:4px solid blue;
+}
+
+h2{
+    color: red;
+    /*  les règles css dans le fichier css du composant 
+    sont prioritaires +
+    exclusives (déborder sur d'autres composants) 
+    => Shadow DOM => 
+    => https://developer.mozilla.org/en-US/docs/Web/API/Element/createShadowRoot
+    page web =>
+     sous partie du page web complètement indépendantes 
+
+     Outil pour les grosses boites => segmenter / cloisener les Blocs de l'application 
+     Typescript => forcer les développeurs => être précis 
+     réduit les erreurs 
+     Framework => structurant : organisation + règle pour travailler + technique 
+     pause déjeuner => rdv dans 1h => 13h47 !!! 
+     Bon appétit 
+    */
+}
