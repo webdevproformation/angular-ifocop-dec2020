@@ -33,7 +33,44 @@
         <label for="email">email</label>
         <input type="email" name="email" class="form-control">
     </div>
-    <div class="form-group col-4 d-flex align-items-end justify-content-end bg-success">
+    <div class="form-group col-4 d-flex align-items-end justify-content-end">
         <input type="submit" class="btn btn-outline-dark">
+    </div>
+</form>
+
+<!-- café => rdv dans 15 min => 10h50 !! -->
+<!--    
+    sexe M Mme => radio 
+    nom 
+    menu déroulant => France / Allemagne / Belgique 
+-->
+<h2>Questionnaire 2</h2>
+<form class="row">
+    <div class="form-group col-2 d-flex align-items-end">
+        <label for="M">
+            <input type="radio" name="sexe" value="M" id="M">
+            <span class="ml-1">M</span>
+        </label>
+        <label for="Mme" class="ml-3">
+            <input type="radio" name="sexe" value="Mme" id="Mme">
+            <span class="ml-1">Mme</span>
+        </label>
+    </div>
+    <div class="form-group col-4">
+        <label for="nom">nom</label>
+        <input type="text" id="nom" class="form-control" name="nom">
+    </div>
+    <!-- cas pratique => ajouter un nouveau champ dans ce formulaire 
+        largeur de 4
+            contenir un input de type de type text dans lequel on va demander le nom de la personne 
+    -->
+    <div class="col-6 form-group">
+        <label for="pays">Pays de naissance</label>
+        <select name="pays" id="pays" class="form-control">
+            <option value=""></option>
+            <option value="France">France</option>
+            <option value="Allemagne">Allemagne</option>
+            <option value="Belgique">Belgique</option>
+        </select>
     </div>
 </form>
