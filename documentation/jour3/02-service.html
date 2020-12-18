@@ -7,3 +7,28 @@ méthode va retourner un tableau qui contient des objets
 => récupérer le tableau qui va être retourné depuis 
 le site json generator 
 
+ng g s services/data 
+
+récupérer les données depuis le site 
+
+https://www.json-generator.com/ 
+
+// créer une méthode supplémentaire dans mon service 
+
+search<T>( motRecherche: string ) {
+    let resultat = []; // par défaut le résultat == rien == tableau vide 
+    this.getAll().forEach( function( item ){ 
+      if( item.about.indexOf( motRecherche ) != -1 || item.company.indexOf(motRecherche)  != -1){
+        resultat.push( item );
+      }
+    } );
+    return resultat;
+}
+
+// ng g c search-page  => app.component.html <app-search-page></app-search-page>
+
+// modifier search-page.component.ts 
+
+// 
+
+

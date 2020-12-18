@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { SearchComponent } from './search/search.component';
+import { SearchPageComponent } from './search-page/search-page.component';
 
 
 
@@ -15,7 +16,8 @@ import { SearchComponent } from './search/search.component';
     AppComponent,
     MenuComponent,
     SearchFormComponent,
-    SearchComponent
+    SearchComponent,
+    SearchPageComponent
   ],
   imports: [
   BrowserModule , 
