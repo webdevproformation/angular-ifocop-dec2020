@@ -12,6 +12,7 @@ import { Component } from '@angular/core';
             </a>
           </li>
         </ul>
+        <app-search></app-search>
       </nav>
     </div>
   `

@@ -100,7 +100,7 @@ créer des formulaires avec bootstrap
 créer un nouveau composant 
 ng g c search 
 
-=> contient une formulaire en ligne 
+=> contient un formulaire en ligne 
 2 champs 
     input dans lequel la personne lancer une recherche 
     bouton => soumettre sa demande 
@@ -108,4 +108,71 @@ ng g c search
 ce composant est l'enfant du composant Menu
 et il devra être ajouté à droite du lien connexion dans la barre de menu 
 
+ng g c search
+
+le positionner dans le composant menu.component.ts 
+
+----------------- 
+
+search.component.ts 
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-search',
+  template: `
+    <form class="form-inline ml-2">
+      <input type="text" name="search" class="form-control" placeholder="recherche ...">
+      <input type="submit" class="btn btn-danger  ml-2">
+    </form>
+  `,
+  styleUrls: ['./search.component.css']
+})
+export class SearchComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+
+pour pouvoir récupérer les informations saisies dans le champ search 
+
+=> activer le module de Angular FormsModule =>
+=> app.module.ts => 
+
+import { FormsModule } from '@angular/forms';
+
+déclarer le module dans le décorateur de votre application 
+
+imports: [
+    BrowserModule , 
+    FormsModule
+],
+
+=> reviens dans notre composant search.component.ts 
+
+=> modifier le champ search => ajouter de nouvelles Directives 
+
+
+=> avant de lancer les rechercher dans une base de données => 
+=> vérification préalable dans le formulaire 
+=> utilisé le champ search (interagit avec ce champ)
+=> rempli une lettre le formulaire 
+
+ajouter deux attributs html dans l'input search 
+
+TDF : template driven form
+template driven form => ajouter directement dans le html du form 
+directive + contrainte (html 5) => le composant va vérifier que les contraintes sont respectées +
+récupérer les données dans les différents champs du formulaire (event binding)="mthode(f)"
+
+dans cette méthode effectuer des traitements => 
+
+appeler un service => rechercher / ajouter (CRUD)
+Create 
+Read 
+Update
+Delete 
 
