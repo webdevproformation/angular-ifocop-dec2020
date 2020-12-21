@@ -1,0 +1,50 @@
+// le composant accueil.component.ts 
+
+// récupérer les données qui sont stockées dans le service 
+
+import { DataService } from "../services/data.service";
+
+// Injection de dépendance 
+
+constructor( private _data : DataService ) { }
+
+// récupérer les données et les stocker dans une variable de la class 
+
+ngOnInit(): void {
+    this.articles = this._data.getAll();
+}
+
+// afficher les informations ./accueil.component.html
+
+<pre>
+    {{ articles | json }} 
+</pre>
+
+// ajouter la nouvelle route app.module.ts 
+Ajouter une nouvelle route 
+
+RouterModule.forRoot([
+      { path: "" , component : AccueilComponent },
+      { path: "contact" , component : ContactComponent },
+      { path: "connexion" , component : ConnexionComponent },
+      { path: "search/:mot" , component : SearchPageComponent },
+      { path: "article/:id" , component : ArticleComponent },
+  ])
+
+
+// page article 
+
+ng g c article 
+
+cas pratique 
+
+// 1 créer dans le service data => créer une nouvelle méthode .getById() qui permet de récupérer un article dans le tableau global 
+// 2 modifier le composant article.component
+afficher l'article concerné 
+
+le module ActivatedRoute => pour récupérer l'id dans l'url 5fdcab989bd89091553497a6 
+
+
+
+
+

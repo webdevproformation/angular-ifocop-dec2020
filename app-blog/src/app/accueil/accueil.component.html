@@ -1,1 +1,29 @@
-<p>accueil works!</p>
+<!-- <pre>
+    {{ articles[0] | json }} 
+</pre> -->
+
+<div class="row mt-4">
+    <article *ngFor="let a of articles ; index as i " [ngClass]="{ 
+        'col-6' : i === 0 ,
+        'col-3' : i !== 0 && i !== ( articles.length -1 ),
+        'col' : i === ( articles.length -1 ) 
+    }">
+        <header class="d-flex justify-content-between align-items-center">
+            <h2 class="mb-0">{{ a.company }}</h2>
+            <img [src]="a.picture" alt="" class="img-thumbnail rounded-circle">
+        </header>
+        <div class="my-4" *ngIf="i !== 0">{{ premiersMot(a.about) }}
+            <a [routerLink]="['/article', a._id ]" class="badge badge-dark">lire la suite ...</a>
+        </div>
+        <div class="my-4" *ngIf="i === 0">{{ a.about }} 
+            <a [routerLink]="['/article', a._id ]" class="badge badge-dark">lire la suite ...</a>
+        </div>
+        <footer class="d-flex">
+            <p class="badge badge-success mr-2 mt-1" style="align-self: flex-start;">{{a.name}}</p>
+            <ul style="margin: 0; padding:0;" >
+                <li *ngFor="let tag of a.tags"  class="badge badge-warning mr-2">{{ tag }}</li>
+            </ul>
+        </footer>
+    </article>
+</div>
+
