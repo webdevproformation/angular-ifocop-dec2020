@@ -1,3 +1,24 @@
-<pre>
+<!-- <pre>
     {{ article | json }}
-</pre>
+</pre> -->
+<div class="row mt-3">
+    <div class="col-6 pl-0">
+        <h1>{{article.company}}</h1>
+        <!-- unsplash => google => unsplash random => https://source.unsplash.com/
+        via.placeholder.com/ -->
+        <img [src]="url" alt="" class="img-thumbnail img-fluid">
+    </div>
+    <div class="col-6 pr-0">
+        <p class="mt-5">{{article.about}}</p>
+        <footer class="d-flex">
+            <p class="badge badge-success mr-2 mt-1" style="align-self: flex-start;">{{article.name}}</p>
+            <ul style="margin: 0; padding:0;" >
+                <li *ngFor="let tag of article.tags"  class="badge badge-warning mr-2">{{ tag }}</li>
+            </ul>
+        </footer>
+        <hr>
+        <div class="d-flex justify-content-end">
+            <a routerLink="/" class="btn btn-sm btn-outline-dark">retour à l'accueil</a>
+        </div>
+    </div>
+</div>

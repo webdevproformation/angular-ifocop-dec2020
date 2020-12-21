@@ -9,7 +9,7 @@ import { DataService } from "../services/data.service";
 })
 export class ArticleComponent implements OnInit {
   article : {};
-
+  url : string;
   constructor( 
       private _data :DataService , 
       private _url : ActivatedRoute ) { }
@@ -21,5 +21,7 @@ export class ArticleComponent implements OnInit {
        // dès que j'ai l'id => recherche dans mon service 
       this.article = this._data.getById( idDansUrl); 
     } )
+
+    this.url = "https://source.unsplash.com/random/600x400?v"+ (Math.random().toFixed(2))
   }
 }
