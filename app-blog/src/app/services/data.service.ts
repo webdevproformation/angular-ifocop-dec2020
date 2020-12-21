@@ -5,6 +5,19 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
+  getById<T>(id : string){
+    // 
+   /*  this.getAll().forEach( function(item){
+      if(  item._id === id ){
+        return item;
+      }
+    } ) */
+
+    return this.getAll().find(function(item){
+      return item._id === id
+    } );
+  }
+
   search<T>( motRecherche: string ) {
       let resultat = []; // par défaut le résultat == rien == tableau vide 
 

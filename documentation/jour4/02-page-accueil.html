@@ -39,11 +39,58 @@ ng g c article
 cas pratique 
 
 // 1 créer dans le service data => créer une nouvelle méthode .getById() qui permet de récupérer un article dans le tableau global 
+
+dans un tableau let a = [1,2,3] 
+
+rechercher dans un tableau => a.find(function( item ){ return item === 2 } )
+rechercher dans un tableau => a.indexOf( 3 ) ; // index || -1 
+
+let b = [ {id : 1 , texte :"toto" } , {id : 2 , texte :"tata" } ]
+
+b.find( function(item){ 
+    return item.id === 2 ;
+} )
+
+
+getById<T>(id : string){
+    // 
+   /*  this.getAll().forEach( function(item){
+      if(  item._id === id ){
+        return item;
+      }
+    } ) */
+    return this.getAll().find(function(item){
+      return item._id === id
+    } );
+  }
 // 2 modifier le composant article.component
 afficher l'article concerné 
 
+//importer 2 services
 le module ActivatedRoute => pour récupérer l'id dans l'url 5fdcab989bd89091553497a6 
-
+importer le service Data avec la méthode getById 
+import { ActivatedRoute } from "@angular/router";
+import { DataService } from "../services/data.service";
+injection de dépendance dans le constructeur du composant 
+constructor( 
+    private _data :DataService , 
+    private _url : ActivatedRoute ) { }
+    export class ArticleComponent implements OnInit {
+        article : {};
+        constructor( 
+            private _data :DataService , 
+            private _url : ActivatedRoute ) { }
+        ngOnInit(): void {
+          // récupérer dans l'url l'id
+          this._url.paramMap.subscribe( (response) => {
+            let idDansUrl = response.get("id");
+             // dès que j'ai l'id => recherche dans mon service 
+            this.article = this._data.getById( idDansUrl); 
+          } )
+        }
+      }
+<pre>{{ article | json }}</pre>
+// pause 
 
 
 
