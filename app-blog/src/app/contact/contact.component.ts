@@ -23,9 +23,7 @@ export class ContactComponent implements OnInit {
   get show(){
     return this._show ;
   }
-
   set show( valeur : boolean){
-    console.log("ici")
     this._show = valeur
   }
 
