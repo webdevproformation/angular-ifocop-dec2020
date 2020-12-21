@@ -6,6 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
+  private _show : boolean = false ;
+  onSubmit(f) :void{
+    if(f.valid){
+      console.log(f.value)
+      // traitement via un service => enregistrer le mail dans une bdd
+      f.reset(); // vider les champs du formulaire 
+      this.show = true;
+     // let that = this;
+      setTimeout(function(){
+        this.show = false;
+      }.bind(this) , 2000 );
+    }
+    
+  }
+  get show(){
+    return this._show ;
+  }
+
+  set show( valeur : boolean){
+    console.log("ici")
+    this._show = valeur
+  }
 
   constructor() { }
 

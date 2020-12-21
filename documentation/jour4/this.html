@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perte de contexte de this</title>
+</head>
+<body>
+    <p>le mot clé this n'a pas la même valeur en fonction d'ooù on l'utilise </p>
+    <script>
+        let a = {
+            nom : "Alain",
+            age : 12 ,
+            description : function(){
+                console.log("de base")
+                console.log(this.nom , this.age);
+            },
+            descriptionLente : function(){
+                let toto = this ;
+                setTimeout( function(){
+                    //console.log(this)
+                    //console.log(this.nom , this.age);
+                    console.log("methode avec variable")
+                    console.log(toto.nom , toto.age);
+                } , 2000)
+            },
+            descriptionTresLente : function(){
+                setTimeout( function(){
+                    console.log("methode avec bind")
+                    console.log(this.nom , this.age);
+                }.bind(this) , 3000)
+            },
+            descriptionTresTresLente : function(){
+                setTimeout( () => {
+                    console.log("methode avec arrow function")
+                    console.log(this.nom , this.age);
+                }  , 4000) 
+            }
+
+        }
+        // la perte de contexte de this 
+        // en js le mot clé this => contexte d'exécution
+        // parfois il faut stocker le contexte dans une variable pour pouvoir l'utiliser dans un autre contexte 
+        // this ==== contexte n'exécution
+        // et non l'objet qui le contient 
+
+        a.description() // Alain 12
+        a.descriptionLente(); // créer une variable
+        a.descriptionTresLente(); // bind()
+        a.descriptionTresTresLente(); // bind()
+    </script>
+</body>
+</html>
