@@ -1,1 +1,48 @@
-<p>connexion works!</p>
+<div class="row">
+    <div  class="col-4 offset-4 mt-4 text-center">
+        <!-- utiliser une image que j'ai moi même réalisé
+        google => logo => télécharger un logo sur mon ordinateur
+        retravailler l'image => photoshop
+        site internet photopea.com (mini photoshop online)
+        // mettre l'image dans le dossier app/assets
+        -->
+        <img src="assets/selection.png" alt="" class="img-fluid px-5">
+    </div>
+    <form class="col-4 offset-4 mt-4" #f="ngForm" (submit)="onSubmit(f)">
+        <div class="form-group">
+            <label for="login">login</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="login" 
+                name="login"
+                ngModel 
+                #login="ngModel"
+                required 
+                minlength="4"
+                maxlength="50">
+        </div>
+        <div class="form-group">
+            <label for="password">password</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                name="password"
+                ngModel 
+                #password="ngModel"
+                required 
+                minlength="4"
+                maxlength="50">
+        </div>
+        <div class="form-group d-flex justify-content-center mt-5">
+            <input 
+                type="submit" 
+                class="btn btn-outline-warning" 
+                [disabled]="!f.valid">
+        </div>
+    </form>
+    <div class="col-4 offset-4 alert alert-danger " *ngIf="show">
+        <p class="mb-0 text-center">vos identifiants sont incorrects</p>
+    </div>
+</div>
