@@ -8,12 +8,11 @@ import { DataService } from "../services/data.service";
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
-  article : {};
+  article : { tags? : string[] , name: string , company: string ,about: string  };
   url : string;
   constructor( 
       private _data :DataService , 
       private _url : ActivatedRoute ) { }
-
   ngOnInit(): void {
     // récupérer dans l'url l'id
     this._url.paramMap.subscribe( (response) => {
@@ -21,7 +20,6 @@ export class ArticleComponent implements OnInit {
        // dès que j'ai l'id => recherche dans mon service 
       this.article = this._data.getById( idDansUrl); 
     } )
-
     this.url = "https://source.unsplash.com/random/600x400?v"+ (Math.random().toFixed(2))
   }
 }

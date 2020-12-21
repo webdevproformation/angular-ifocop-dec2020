@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // programmation synchrone 
+        let a = "bonjour";
+        console.log(a);
+        let b = "hello";
+        console.log(b);
+
+        // chaque instruction est exécutée à 100 % avant de passer à la ligne suivante 
+        // synchrone 
+
+        // programmation asynchrone 
+        // setTimeout 
+        // ranger ma chambre 
+        // 1 classer => 3 secondes 
+        // 2 nettoyer => 4 secondes
+        // 3 ranger  => 2 secondes 
+        // je dois d'abord classer puis nettoyer puis ranger (je dois garder l'ordre !! )
+        
+       /*  setTimeout( function(){
+            console.log("classer")
+        } , 3000 )
+
+        setTimeout( function(){
+            console.log("nettoyer")
+        } , 4000 )
+
+        setTimeout( function(){
+            console.log("ranger")
+        } , 2000 ) */
+
+        // callback hell = enfer des callback 
+
+        /* setTimeout( function(){
+            console.log("classer")
+            setTimeout( function(){
+                console.log("nettoyer")
+                setTimeout( function(){
+                    console.log("ranger")
+                } , 2000 )
+            } , 4000 )
+        } , 3000 ) */
+
+
+        // promesse 
+
+        function classer(){
+            return new Promise( function( resolve, reject ){
+                setTimeout(function(){
+                    console.log("classer");
+                    resolve()
+                } , 3000)
+             } )
+        }
+        function nettoyer(){
+            return new Promise ( function( resolve, reject){
+                setTimeout(function(){
+                    console.log("nettoyer");
+                    resolve()
+                } , 4000)
+            })
+        }
+        function ranger(){
+            return new Promise( function( resolve, reject){
+                setTimeout(function(){
+                    console.log("ranger");
+                    resolve()
+                } , 2000)
+            })
+        }
+        classer().then( function(){ 
+            return nettoyer()
+        } ).then( function(){
+            return ranger()
+        }) ;
+
+        // AJAX 
+
+        const requete = new XMLHttpRequest();
+        requete.open("get","http://jsonplaceholder.typicode.com/posts");
+        // json placeholder => 
+        requete.onload = function(){ 
+            console.log(JSON.parse(requete.responseText))
+        }
+        requete.send()
+
+        // SQL SELECT / DELETE / UPDATE / INSERT 
+        // []  return ou find()  / .slice() / find() + mis à jour / push()
+    </script>
+</body>
+</html>

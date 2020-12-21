@@ -5,6 +5,10 @@ import { Injectable } from '@angular/core';
 })
 export class DataService {
 
+  add(){}
+  delete(){}
+  update(){}
+
   getById<T>(id : string){
     // 
    /*  this.getAll().forEach( function(item){
