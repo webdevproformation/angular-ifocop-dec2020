@@ -30,7 +30,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
       { path: "" , component : AccueilComponent },
       { path: "contact" , component : ContactComponent },
       { path: "connexion" , component : ConnexionComponent },
-      { path: "search" , component : SearchPageComponent }
+      { path: "search/:mot" , component : SearchPageComponent }
   ])
   ],
   providers: [

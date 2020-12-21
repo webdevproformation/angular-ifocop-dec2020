@@ -13,7 +13,7 @@ export class DataService {
       }
 
       this.getAll().forEach( function( item ){ 
-        if( item.about.indexOf( motRecherche ) != -1 || item.company.indexOf(motRecherche)  != -1){
+        if( item.about.toLowerCase().indexOf( motRecherche ) != -1 || item.company.toLowerCase().indexOf(motRecherche)  != -1){
           resultat.push( item );
         }
       } );

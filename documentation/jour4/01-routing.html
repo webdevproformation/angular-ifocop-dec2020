@@ -1,0 +1,138 @@
+// routing 
+// le fait de pouvoir changer de page dans une application Angular 
+
+// pour utiliser cette fonctionnalité 
+// dans app.module.ts 
+
+// importer le module import { RouterModule } from '@angular/router';
+
+// activer + paramètre le module 
+
+imports: [
+  BrowserModule , 
+  FormsModule,
+  RouterModule.forRoot([
+      { path: "" , component : AccueilComponent },
+      { path: "contact" , component : ContactComponent },
+      { path: "connexion" , component : ConnexionComponent },
+      { path: "search" , component : SearchPageComponent }
+  ])
+
+// pour la page search 
+// redirection 
+// dans le composant search (formulaire de recherche )
+// changer son comportement au moment du click 
+// redirection 
+// module Router 
+
+// le composant search (contient le formulaire)
+
+import { Router } from "@angular/router";
+
+// injection de dépendance  : dans le constructeur de la class 
+
+constructor( private _router : Router  ) { }
+
+// modifier la méthode onSubmit(f){
+
+    // this.search.emit(f.value.search);
+    this._router.navigate([ "/search", f.value.search.trim().toLowerCase() ]);
+ }
+let a = "               coucouc hello                  ";
+a.trim() //permet de supprimer les espaces au début et à la fin d'un coucouc hello
+// modifier notre config dans le fichier app.module.ts 
+
+RouterModule.forRoot([
+      { path: "" , component : AccueilComponent },
+      { path: "contact" , component : ContactComponent },
+      { path: "connexion" , component : ConnexionComponent },
+      { path: "search/:mot" , component : SearchPageComponent }
+  ])
+
+// au lieu d'utiliser @Input 
+
+// la valeur qui est dans la barre d'adresse 
+
+// search-page.component.ts 
+
+// un peu le modifier => changer la manière de récupérer l'information 
+
+// au lieu d'utiliser @Input 
+
+// import { ActivatedRoute } from "@angular/router" ;
+// permet de récupérer le contenu de la barre d'adresse  
+
+// service => Injection de dépendance => modifier le constructeur de la class 
+
+constructor( 
+    private _data : DataService , 
+    private _url : ActivatedRoute ) { }
+
+// récupérer la valeur saisie 
+modifier la méthode ngOnInit(){}
+
+ngOnInit(): void {
+    // this.resultat  = this._data.search(this.rrrr); // @Input 
+    this._url.paramMap.subscribe( (response) => {  // via l'url 
+      // console.log(response.get("mot"))
+      this.resultat = this._data.search(response.get("mot"));
+    } )  
+}
+
+// amélioration méthode search 
+
+// faire en sorte que lorsque que l'on fait un rechercher MAJUSCULE et en minuscule 
+
+// la recherche fonctionne quand même 
+
+search<T>( motRecherche: string ) {
+    let resultat = []; // par défaut le résultat == rien == tableau vide 
+
+    if(motRecherche === "*"){
+      return this.getAll() ;
+    }
+
+    this.getAll().forEach( function( item ){ 
+      if( item.about.toLowerCase().indexOf( motRecherche ) != -1 || item.company.toLowerCase().indexOf(motRecherche)  != -1){
+        resultat.push( item );
+      }
+    } );
+    return resultat;
+}
+
+// dans le composant page-search 
+//bandeau en haut => donner des informations : le nombre de résultat trouvé en bdd 
+
+// search-page.component.ts 
+
+<div class="alert alert-success col-12 mt-3">
+    <p class="mb-0">
+      Vous avez {{ resultat.length }} résultat(s) avec le mot <strong>{{ mot }}</strong>
+    </p>
+</div>
+
+// dans la class 
+
+mot : string = ""; // nouvel attribut 
+
+ngOnInit(): void {
+    // this.resultat  = this._data.search(this.rrrr);
+    this._url.paramMap.subscribe( (response) => { 
+      // console.log(response.get("mot"))
+      this.resultat = this._data.search(response.get("mot"));
+      this.mot = response.get("mot"); // valeur dans la barre d'adresse 
+    } )  
+  }
+
+// ------------------------------------
+
+cas pratique : 
+
+// pouvez vous remplir la page d'accueil => composant accueil 
+
+// récupérer l'ensemble des articles dans stockés dans le service data 
+
+afficher tous les articles disponibles dans la page !!  
+utiliser bootstrap pour la mis en forme !! 
+
+// 5 min => du temps après la pause déjeuner aussi 
