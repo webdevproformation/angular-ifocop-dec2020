@@ -8,6 +8,11 @@ export class DataService {
   add(){}
   delete(){}
   update(){}
+  // back office et le CRUD 
+  // fin 
+  // mise en ligne 
+  // mercredi => Bonus // consolider 
+  // regex 
 
   getById<T>(id : string){
     // 
