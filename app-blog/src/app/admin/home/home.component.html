@@ -20,7 +20,7 @@
                     <td>{{ article.company }}</td>
                     <td>{{ article.about }}</td>
                     <td> 
-                        <a [routerLink]="['/admin/article', article._id]" class="btn btn-warning">Modifier</a>
+                        <a [routerLink]="['/admin/post/update', article._id]" class="btn btn-warning">Modifier</a>
                     </td>
                     <td>
                         <button class="btn btn-danger" (click)="onClickDelete( article._id )">Supprimer</button>

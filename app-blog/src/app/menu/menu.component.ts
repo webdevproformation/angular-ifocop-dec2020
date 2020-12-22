@@ -34,7 +34,7 @@ export class MenuComponent {
   onClickDeconnexion(){
     this._auth.logout();
   }
-  constructor( private _auth : AuthService){}
+  constructor( public _auth : AuthService){}
 
   onSearch($event){
     console.log("dans le composant menu")

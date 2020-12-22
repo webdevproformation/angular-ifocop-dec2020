@@ -1,0 +1,38 @@
+DELETE 
+ajouter la méthode delete(){} dans le service
+supprimer un article dans un tableau == [{},{}].splice( 1, 1 )
+
+ajouter une variable d'instance 
+data = [ ]
+
+modifier la méthode 
+
+delete<T>( id : string ){
+    let data = [... this.getAll()]
+    let elementASupprimer = data.find( function( item ){
+      return item._id === id;
+    } )
+
+    let index = data.indexOf( elementASupprimer );
+    console.log(index);
+
+    if(index !== -1 ){
+      data.splice( index , 1 );
+      console.log(data);
+      return data;
+    }
+}
+
+le composant home => appeler cette méthode 
+
+home.component.html 
+
+<button class="btn btn-danger" (click)="onClickDelete( article._id )">Supprimer</button>
+
+home.component.ts 
+
+nouvelle méthode qui appele la méthode delete dans notre service data 
+
+onClickDelete( id:string ):void{
+    this.articles = this._data.delete( id );
+}

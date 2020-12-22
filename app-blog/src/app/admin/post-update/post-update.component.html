@@ -1,0 +1,28 @@
+<div class="row">
+    <h1 class="col-12 my-3">Modifier un article existant</h1>
+    <form class="col-12">
+        <div class="form-group">
+            <input type="hidden" name="_id" [(ngModel)]="article._id" #_id >
+        </div>
+        <div class="form-group">
+            <label for="titre">titre</label>
+            <input type="text" id="titre" name="titre" class="form-control" [(ngModel)]="article.company" #company >
+        </div>
+        <div class="form-group">
+           <label for="contenu">contenu</label>
+           <textarea name="contenu" id="contenu" rows="3" class="form-control" [(ngModel)]="article.about" #about></textarea>
+        </div>
+        <div class="form-group">
+            <label for="auteur">auteur</label>
+            <input type="text" id="auteur" name="auteur" class="form-control" [(ngModel)]="article.name" #name>
+        </div>
+        <div class="form-group">
+            <label for="tags">tags</label>
+            <input type="text" id="tags" name="tags" class="form-control" [(ngModel)]="article.tags" #tags>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-outline-success btn-sm" (click)="onSubmit(_id.value ,company.value,about.value , name.value, tags.value   )">
+        </div>
+    </form>
+</div>
+

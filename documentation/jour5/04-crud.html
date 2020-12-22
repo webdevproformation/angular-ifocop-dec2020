@@ -16,76 +16,8 @@ getById<T> == SELECT * FROM DATA WHERE _id = "id"
 
 ---- 
 
-DELETE 
-ajouter la méthode delete(){} dans le service
-supprimer un article dans un tableau == [{},{}].splice( 1, 1 )
-
-delete<T>( id : string ){
-    let data = [... this.getAll()]
-    let elementASupprimer = data.find( function( item ){
-      return item._id === id;
-    } )
-
-    let index = data.indexOf( elementASupprimer );
-    console.log(index);
-
-    if(index !== -1 ){
-      data.splice( index , 1 );
-      console.log(data);
-      return data;
-    }
-}
-
-le composant home => appeler cette méthode 
-
-home.component.html 
-
-<button class="btn btn-danger" (click)="onClickDelete( article._id )">Supprimer</button>
-
-home.component.ts 
-
-nouvelle méthode qui appele la méthode delete dans notre service data 
-
-onClickDelete( id:string ):void{
-    this.articles = this._data.delete( id );
-}
-
-// création d'un nouvel article 
-
-// add => 
-
-// créer un nouveau composant = 
-// ajouter un nouveau formulaire dans un composant 
-
-// ng g c admin/post-add 
-
-// ajouter la nouvelle route dans le fichier app.module.ts 
 
 
-liaison entre le composant et l'url 
 
-RouterModule.forRoot([
-      { path: "" , component : AccueilComponent },
-      { path: "contact" , component : ContactComponent },
-      { path: "connexion" , component : ConnexionComponent },
-      { path: "search/:mot" , component : SearchPageComponent },
-      { path: "article/:id" , component : ArticleComponent },
-      { path: "admin/post/add" , component : PostAddComponent },
-      { path: "admin" , component : HomeComponent },
-      { path: "**"  , component : NotFoundComponent}
-  ])
 
-// la vue du composant home => page d'accueil du back office 
 
-<a routerLink="/admin/post/add" class="btn btn-primary">Ajouter un nouvel article</a>
-
-// tester 
-
-// cas pratique : remplir le composant PostAddComponent
-avec un formulaire 
-
-company  : input type texte
-about  : champ multiligne 
-envoyer => récupérer les valeurs saisies dans le formulaire 
-
-faire en sorte que lorsque l'on clique sur le bouton 

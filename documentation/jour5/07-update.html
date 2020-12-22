@@ -1,0 +1,47 @@
+créer un nouveau composant post-update 
+ng g c admin/post-update
+
+Ajouter une nouvelle route => admin/post/update/id 
+app.module.ts 
+
+RouterModule.forRoot([
+      { path: "" , component : AccueilComponent },
+      { path: "contact" , component : ContactComponent },
+      { path: "connexion" , component : ConnexionComponent },
+      { path: "search/:mot" , component : SearchPageComponent },
+      { path: "article/:id" , component : ArticleComponent },
+      { path: "admin/post/update/:id" , component : PostUpdateComponent },
+      { path: "admin/post/add" , component : PostAddComponent },
+      { path: "admin" , component : HomeComponent },
+      { path: "**"  , component : NotFoundComponent}
+  ])
+
+// home.component.html 
+
+<a [routerLink]="['/admin/post/update', article._id]" class="btn btn-warning">Modifier</a>
+
+// tester => 
+
+contenir un formulaire === identique au formulaire présent dans le composant add 
+
+copier la vue du composant post-add => dans la vue du composant post-update 
+
+// récupérer post-update.component.ts
+
+appeler le service data => récupérer l'id 1608649837601a47
+getById()
+dans le formulaire 
+
+// créer une méthode dans le service data => update( toutesInfosForm )
+// mettre à jour l'item concerné ! 
+
+// fin du back office 
+
+// sécuriser 
+// données => json à part 
+
+=> 16h38 !! 
+
+// mettre en ligne votre projet sur un hébergeur
+
+
