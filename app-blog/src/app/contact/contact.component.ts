@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
+  title : string = "Nous contacter !!"
   private _show : boolean = false ;
   onSubmit(f) :void{
     if(f.valid){

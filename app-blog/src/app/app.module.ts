@@ -12,6 +12,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ArticleComponent } from './article/article.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ArticleComponent } from './article/article.component';
     ContactComponent,
     AccueilComponent,
     ConnexionComponent,
-    ArticleComponent
+    ArticleComponent,
+    NotFoundComponent
   ],
   imports: [
   BrowserModule , 
@@ -34,6 +36,7 @@ import { ArticleComponent } from './article/article.component';
       { path: "connexion" , component : ConnexionComponent },
       { path: "search/:mot" , component : SearchPageComponent },
       { path: "article/:id" , component : ArticleComponent },
+      { path: "**"  , component : NotFoundComponent}
   ])
   ],
   providers: [

@@ -1,0 +1,86 @@
+support :
+https://formation.webdevpro.net/angular/
+login : angular
+mdp : angular
+
+------------------------------------------------ 
+partage des notes de cours : 
+
+https://github.com/webdevproformation/angular-ifocop-dec2020
+
+fini le front office d'un site = partie visible par n'importe quel internaute
+
+- Ergonomique / joli / intuitif 
+- il faut faire attention sécurité => laisser aux internautes la possibilité
+d'interagir avec vos scripts =>
+    barre d'adresse => si une adresse saisie mais inexistante 
+    formulaire => 
+        <script></script>
+        <img src="" alt=""> => injection filtrer &lt; 
+    dans la console : il est possible du supprimer facilement les sécurités que l'on a mises en place 
+        formulaire => doubler / tripler la sécurité 
+
+--------------- 
+
+NodeJS
+
+--------------- 
+
+Créer un nouveau composant => ng g c not-found
+
+un peu le styliser => not-found.component.html
+
+<div class="jumbotron">
+    <h1 class="display-4 text-center"> 404 <br><small>Aucun résultat pour l'adresse recherchée</small> </h1>
+</div>
+
+Modifier le app.module.ts => routing 
+
+RouterModule.forRoot([
+    { path: "" , component : AccueilComponent },
+    { path: "contact" , component : ContactComponent },
+    { path: "connexion" , component : ConnexionComponent },
+    { path: "search/:mot" , component : SearchPageComponent },
+    { path: "article/:id" , component : ArticleComponent },
+    { path: "**"  , component : NotFoundComponent}
+])
+
+// attention à la fin !! 
+
+// ---------------------- 
+
+sur la page article et l'internaute va modifier l'id rechercher
+
+rechercher si le résultat === -1 alors 
+
+
+// créer le back office 
+
+partie du site qui est dédiée aux gestionnaires du sites 
+la différence entre un gestionnaire // internaute  
+
+le gestionnaire dispose d'une login / mot de passe valide 
+
+un fois que le gestionnaire s'est connecté => stocker dans le navigateur une le fait que cet utilisateur est le gestionnaire  
+
+Eviter que le gestionnaire soit obligé de saisir son login et mot de passe dès qu'il veut faire une action dans le back office 
+
+=> token = chaine de caractère plus ou moins aléatoire 
+=> stocker dans le localStorage 
+window.document.getElementById() => DOM 
+window.localStorage
+window.console.log()
+( ça ne vient de Angular, dans le navigateur )
+
+session_start();
+$_SESSION
+
+// voir le localStorage > Chrome > Inspecter > Application > Local Storage 
+// Firefox > Examiner > Stockage > Stockage local  
+
+------------------ 
+
+
+
+
+

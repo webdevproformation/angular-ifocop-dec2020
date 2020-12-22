@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService }  from "../services/auth.service"
 
 @Component({
   selector: 'app-connexion',
@@ -6,20 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
-
-  compteUser = {
-    login : "login",
-    mdp : "azerty",
-    role : "admin"
-  }
   show : boolean = false ;
-
+  constructor( private _auth : AuthService ) { }
   onSubmit(f){
     if(f.valid){
       console.log(f.value)
-      if( f.value.login === this.compteUser.login && f.value.password === this.compteUser.mdp ){
+      // stocker dans le localStorage une information qui dit => c'est la administrateur 
+      let verif = this._auth.login( f.value );
+      if( verif ){
         // redirection vers la page d'accueil du back office du site 
-        // stocker dans le localStorage une information qui dit => c'est la administrateur 
+        // Router 
       } else {
         f.reset();
         this.show = true ;
@@ -30,7 +27,7 @@ export class ConnexionComponent implements OnInit {
     }
   }
 
-  constructor() { }
+ 
 
   ngOnInit(): void {
   }

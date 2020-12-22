@@ -12,7 +12,7 @@ import { ActivatedRoute } from "@angular/router" ;
         </p>
       </div>
       <article class="card col-6 my-2" *ngFor="let r of resultats">
-        <header class="d-flex justify-content-betweern align-items-center mb-2">
+        <header class="d-flex justify-content-between align-items-center mb-2">
           <h2 class="mb-0">{{ r.company }}</h2>
           <img [src]="r.picture" alt="" class="mt-2 img-thumbnail rounded-circle">
         </header>

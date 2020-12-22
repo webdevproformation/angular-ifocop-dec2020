@@ -1,0 +1,36 @@
+=> chapitre Authentification et Autorisation 
+
+Maintenant on crée le formulaire => 
+
+service ng g s services/auth
+
+ce service doit disposer au mininum de 3 méthodes  :
+
+login(){}
+logout(){}
+isLoggedIn(){}
+
+
+login( credentials ){}
+- utilisé dans le formulaire de connexion 
+- credentials => login et mot de passe saisis 
+- vérification ?? loginBDD = credentials.login
+- vérification ?? passwordBDD = credentials.password 
+
+=> si c'est OK alors => ajouter le localStorage 
+                    + true 
+=> sinon false 
+----------------- 
+
+logout(){} => vider le localstorage 
+PHP => session_destroy()
+
+----------------- 
+
+isLoggedIn(){} => est ce qu'il y a une valeur dans le localStorage ?? 
+                => est ce que c'est valeur est conforme ?? 
+                true
+                sinon false 
+
+login et logout => Authentifier (vérifier que les données saisies sont conformes)
+isLoggedIn => autoriser => pour pouvoir réaliser certaines actions il faut true 
