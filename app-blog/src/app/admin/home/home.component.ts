@@ -18,3 +18,12 @@ export class HomeComponent implements OnInit {
   }
 
 }
+
+// {id : 1 , nom : "Alain"} => transformer en chaine de caractère 
+// JSON.stringify( {id : 1 , nom : "Alain"} ) => "{ "id" : "1" , "nom" : "Alain"}"
+// let a = "{ "id" : "1" , "nom" : "Alain"}"
+// a.nom => ne marche pas
+// JSON.parse ( "{ "id" : "1" , "nom" : "Alain"}" ) => {id : 1 , nom : "Alain"}
+
+// pause déjeuner => rdv dans 1 heure 13h43 !! 
+// bon appétit à tout lemonde 
