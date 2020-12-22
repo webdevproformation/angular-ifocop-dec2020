@@ -1,3 +1,42 @@
+
+// cas pratique 
+
+// dans la page d'accueil du back office 
+zone 1
+// Bonjour le nom de l'admin 
+zone 2
+// afficher la liste des articles sous forme de tableau 
+
+tableau 
+    id | titre | 5 premiers mots | modifier | supprimer 
+
+utiliser Bootstrap pour la mise en forme 
+
+home.component.ts 
+
+import { Component, OnInit } from '@angular/core';
+import { DataService } from "../../services/data.service";
+
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+  nom : string = "";
+  articles : Array<{ _id: string , company : string , about:string}> = []
+
+  constructor( private _data : DataService) { }
+
+  ngOnInit(): void {
+    this.articles = this._data.getAll();
+    this.nom = JSON.parse(localStorage.getItem("token")).nom ;
+  }
+
+}
+
+// home.component.html 
+
 <div class="row">
     <div class="col-12 px-0 my-3 d-flex justify-content-between">
         <span>Bonjour {{ nom }} ! </span> 
@@ -30,3 +69,5 @@
         </table>
     </div>
 </div>
+
+
