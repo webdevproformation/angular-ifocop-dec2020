@@ -6,8 +6,26 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   add(){}
-  delete(){}
+
+  delete<T>( id : string ){
+    let data = [... this.getAll()]
+    let elementASupprimer = data.find( function( item ){
+      return item._id === id;
+    } )
+
+    let index = data.indexOf( elementASupprimer );
+    console.log(index);
+
+    if(index !== -1 ){
+      data.splice( index , 1 );
+      console.log(data);
+      return data;
+    }
+
+  }
+
   update(){}
+
   // back office et le CRUD 
   // fin 
   // mise en ligne 

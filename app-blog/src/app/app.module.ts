@@ -14,6 +14,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { ArticleComponent } from './article/article.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './admin/home/home.component';
+import { PostAddComponent } from './admin/post-add/post-add.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HomeComponent } from './admin/home/home.component';
     ConnexionComponent,
     ArticleComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    PostAddComponent
   ],
   imports: [
   BrowserModule , 
@@ -38,6 +40,7 @@ import { HomeComponent } from './admin/home/home.component';
       { path: "connexion" , component : ConnexionComponent },
       { path: "search/:mot" , component : SearchPageComponent },
       { path: "article/:id" , component : ArticleComponent },
+      { path: "admin/post/add" , component : PostAddComponent },
       { path: "admin" , component : HomeComponent },
       { path: "**"  , component : NotFoundComponent}
   ])

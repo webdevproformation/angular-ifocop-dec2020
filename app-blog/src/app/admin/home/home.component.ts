@@ -17,6 +17,10 @@ export class HomeComponent implements OnInit {
     this.nom = JSON.parse(localStorage.getItem("token")).nom ;
   }
 
+  onClickDelete( id:string ):void{
+    console.log( id );
+    this._data.delete( id );
+  }
 }
 
 // {id : 1 , nom : "Alain"} => transformer en chaine de caractère 
