@@ -27,8 +27,20 @@ export class AuthService {
     }
   }
 
-  logout(){}
+  logout():void{
+    localStorage.removeItem("token");
+    // supprimer le token du localstorage 
+  }
 
-  isLoggedIn(){}
+  isLoggedIn() :boolean{
+    // est ce que local storage existe ??
+    let isLocalStorageExist = localStorage.getItem("token");
+    /* if(isLocalStorageExist){
+      return true;
+    } else {
+      return false ;
+    } */
+    return (isLocalStorageExist) ? true : false ; 
+  }
 
 }

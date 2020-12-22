@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService }  from "../services/auth.service"
+import { Router } from "@angular/router" ;
 
 @Component({
   selector: 'app-connexion',
@@ -8,7 +9,7 @@ import { AuthService }  from "../services/auth.service"
 })
 export class ConnexionComponent implements OnInit {
   show : boolean = false ;
-  constructor( private _auth : AuthService ) { }
+  constructor( private _auth : AuthService , private _route : Router ) { }
   onSubmit(f){
     if(f.valid){
       console.log(f.value)
@@ -17,6 +18,7 @@ export class ConnexionComponent implements OnInit {
       if( verif ){
         // redirection vers la page d'accueil du back office du site 
         // Router 
+        this._route.navigate(["/admin"]);
       } else {
         f.reset();
         this.show = true ;
