@@ -18,6 +18,10 @@
         </footer>
         <hr>
         <div class="d-flex justify-content-end">
+            <a 
+                [routerLink]="[ '/admin/post/update' , article._id ]" 
+                    class="btn btn-sm btn-outline-primary mr-3"
+                *ngIf="auth.isAdminLogged()">Modifier</a>
             <a routerLink="/" class="btn btn-sm btn-outline-dark">retour à l'accueil</a>
         </div>
     </div>

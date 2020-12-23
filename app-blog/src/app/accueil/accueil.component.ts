@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from "../services/data.service";
+import { Article } from "../services/article";
 
 @Component({
   selector: 'app-accueil',
@@ -7,7 +8,7 @@ import { DataService } from "../services/data.service";
   styleUrls: ['./accueil.component.css']
 })
 export class AccueilComponent implements OnInit {
-  articles : Array<{}>;
+  articles : Array<Article>;
   constructor( private _data : DataService ) { }
   ngOnInit(): void {
     this.articles = this._data.getAll();

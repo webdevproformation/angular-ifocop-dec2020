@@ -10,6 +10,7 @@
                 <th>id</th>
                 <th>titre</th>
                 <th>description</th>
+                <th>voir</th>
                 <th>modifier</th>
                 <th>supprimer</th>
             </tr>
@@ -20,10 +21,13 @@
                     <td>{{ article.company }}</td>
                     <td>{{ article.about }}</td>
                     <td> 
-                        <a [routerLink]="['/admin/post/update', article._id]" class="btn btn-warning">Modifier</a>
+                        <a [routerLink]="['/article', article._id]" class="btn btn-secondary btn-sm">Voir</a>
+                    </td>
+                    <td> 
+                        <a [routerLink]="['/admin/post/update', article._id]" class="btn btn-warning btn-sm">Modifier</a>
                     </td>
                     <td>
-                        <button class="btn btn-danger" (click)="onClickDelete( article._id )">Supprimer</button>
+                        <button class="btn btn-danger btn-sm" (click)="onClickDelete( article._id )">Supprimer</button>
                     </td>
                 </tr>
             </tbody>

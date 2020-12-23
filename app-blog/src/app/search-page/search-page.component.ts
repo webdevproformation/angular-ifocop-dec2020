@@ -1,5 +1,6 @@
 import { Component, OnInit , Input , OnChanges } from '@angular/core';
 import { DataService } from './../services/data.service';
+import { Article } from './../services/article';
 import { ActivatedRoute } from "@angular/router" ;
 
 @Component({
@@ -35,7 +36,7 @@ import { ActivatedRoute } from "@angular/router" ;
 export class SearchPageComponent implements OnInit , OnChanges {
 
   @Input() rrrr : string ;
-  resultats : Array<{ tags? : string[] , name: string , company: string ,about: string  }> = [];
+  resultats : Array<Article> = [];
   mot : string = "";
   constructor( 
       private _data : DataService , 

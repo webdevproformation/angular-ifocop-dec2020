@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute , Router } from "@angular/router";
 import { DataService } from "../services/data.service";
+import { AuthService } from './../services/auth.service';
+import { Article } from '../services/article';
 
 @Component({
   selector: 'app-article',
@@ -8,12 +10,13 @@ import { DataService } from "../services/data.service";
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
-  article : { tags? : string[] , name: string , company: string ,about: string  };
+  article : Article;
   url : string;
   constructor( 
       private _data :DataService , 
       private _url : ActivatedRoute ,
-      private _route : Router ) { }
+      private _route : Router ,
+      public auth : AuthService  ) { }
   ngOnInit(): void {
     // récupérer dans l'url l'id
     this._url.paramMap.subscribe( (response) => {

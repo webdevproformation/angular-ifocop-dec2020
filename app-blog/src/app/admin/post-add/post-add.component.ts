@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService }  from "../../services/data.service";
 import { Router } from "@angular/router";
+import { Article } from './../../services/article';
 
 @Component({
   selector: 'app-post-add',
@@ -14,7 +15,7 @@ export class PostAddComponent implements OnInit {
     this.auteur = JSON.parse(localStorage.getItem("token")).nom;
   }
   onSubmit(f){
-    let donnees = {
+    let donnees : Article = {
       company : f.value.titre || `Article ${(Math.random()*100).toFixed(0)}`,
       name : f.value.auteur || "moi" ,
       about : f.value.contenu || "un peu de contenu",

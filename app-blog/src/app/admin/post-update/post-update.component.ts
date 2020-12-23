@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute , Router } from "@angular/router";
 import { DataService } from "../../services/data.service" ;
+import { Article } from "../../services/article" ;
 
 @Component({
   selector: 'app-post-update',
@@ -21,8 +22,8 @@ export class PostUpdateComponent implements OnInit {
       this.article = this._data.getById( id );
     } )
   }
-  onSubmit( f ){
-    let donnees = {
+  onSubmit( f  ){
+    let donnees : Article = {
       _id : f.value._id ,
       company : f.value.titre ,
       name : f.value.auteur  ,

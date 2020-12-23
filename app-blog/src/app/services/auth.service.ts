@@ -46,4 +46,15 @@ export class AuthService {
     return (isLocalStorageExist) ? true : false ; 
   }
 
+  isAdminLogged() : boolean{
+    let isLocalStorageExist = localStorage.getItem("token");
+    let profil = JSON.parse(isLocalStorageExist);
+
+    if(profil.role === "admin"){
+      return true;
+    }
+    return false ;
+
+  }
+
 }

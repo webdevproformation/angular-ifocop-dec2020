@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from "../../services/data.service";
+import { DataService } from "../../services/data.service"; 
+import { Article } from "../../services/article";
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,7 @@ import { DataService } from "../../services/data.service";
 })
 export class HomeComponent implements OnInit {
   nom : string = "";
-  articles : Array<{ _id: string , company : string , about:string}> = []
+  articles : Array<Article> = []
 
   constructor( private _data : DataService) { }
 

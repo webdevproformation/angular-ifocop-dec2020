@@ -94,17 +94,113 @@ non-autorise.component.html en s'inpirant du design du composant not-found
 <div class="row">
     <div class="jumbotron mx-0 mt-4 col-12 bg-warning">
         <h1 class="display-4 text-center"> 401 <br>
-            <small>Vous devez être connecté</small> </h1>
+            <small>Vous devez être connecté</small></h1>
     </div>
 </div>
 
 // cas pratique 
 1 ajouter dans la page d'accueil du back office pour chaque article un bouton voir => afficher dans l'article dans le front 
 
+dans le composant home.component.html 
+<td> 
+    <a [routerLink]="['/article', article._id]" class="btn btn-secondary btn-sm">Voir</a>
+</td>
+
+
 2 Quand on est dans l'article dans le front ajouter un bouton modifier => accéder au back office dans 
 ce bouton ne doit être visible QUE si on est connecté & admin 
 
 
+<div class="d-flex justify-content-end">
+    <a [routerLink]="[ '/admin/post/update' , article._id ]" class="btn btn-sm btn-outline-primary mr-3">Modifier</a>
+    <a routerLink="/" class="btn btn-sm btn-outline-dark">retour à l'accueil</a>
+</div>
+
+// article.component.ts (même technique que dans le Menu )
+
+import { AuthService } from './../services/auth.service';
+
+constructor( 
+      private _data :DataService , 
+      private _url : ActivatedRoute ,
+      private _route : Router ,
+      public auth : AuthService  ) { }
+
+et re modifier la vue :
+
+ <a 
+      [routerLink]="[ '/admin/post/update' , article._id ]" 
+          class="btn btn-sm btn-outline-primary mr-3"
+      *ngIf="auth.isLoggedIn()">Modifier</a>
+
+// nouvelle méthode 
+// connecté ET admin 
+
+// ajouter une nouvelle méthode dans le service auth.service.ts
 
 
+isAdminLogged() : boolean{
+    let isLocalStorageExist = localStorage.getItem("token");
+    let profil = JSON.parse(isLocalStorageExist);
+
+    if(profil.role === "admin"){
+      return true;
+    }
+    return false ;
+}
+
+<a 
+      [routerLink]="[ '/admin/post/update' , article._id ]" 
+          class="btn btn-sm btn-outline-primary mr-3"
+      *ngIf="auth.isAdminLogged()">Modifier</a>
+
+modifier le profil dans auth.service.ts
+
+compteUser = {
+    nom : "Alain" ,
+    login : "login",
+    mdp : "azerty",
+    role : "redacteur"
+  }
+
+=> connexé au back office 
+
+// class donner l'aspect d'un article  
+
+=> mieux typer lorsque l'on crée un article 
+
+ng g class services/article 
+
+export class Article {
+    _id? : string ;
+    company: string ;
+    name: string ;
+    about: string ;
+    tags : string[] ;
+    picture : string ;
+}
+
+// article.component.ts 
+
+import { Article } from '../services/article';
+
+home.component.ts 
+
+post-add.component.ts 
+
+search-page.component.ts 
+
+accueil.component.ts 
+
+// -------------------- 
+
+// changer le stocker des bdd => service HTTP /  
+
+// Regex pour éviter d'avoir => injection de javascript  
+
+// JWT => expliquer le principe ( crypter profil )
+
+// mise en ligne => 
+
+// bon appétit le monde => rdv dans 1 h => 13h38 !! 
 
