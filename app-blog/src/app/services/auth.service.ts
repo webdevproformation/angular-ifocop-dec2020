@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from "@angular/router";
 
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +15,8 @@ export class AuthService {
     role : "admin"
   }
 
+  jwt = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibm9tIjoiQWxhaW4iLCJsb2dpbiI6ImxvZ2luIiwibWRwIjoiYXplcnR5Iiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNTE2MjM5MDIyfQ.JSJ22klumRD3KHMTsE-XZjqzrsMwF4QHIVT7PnIMwek" ;
+
   constructor( private _route : Router) { }
 
   login( credentials : { login : string , password : string } ) :boolean {
@@ -22,6 +26,7 @@ export class AuthService {
         role : this.compteUser.role 
       }
       localStorage.setItem("token" , JSON.stringify(token));
+      localStorage.setItem("token2" , this.jwt);
       return true;
     } else {
       return false ;
@@ -43,6 +48,9 @@ export class AuthService {
     } else {
       return false ;
     } */
+
+    // let test = new JwtHelperService();
+    // console.log( test.decodeToken(localStorage.getItem('token2')) )
     return (isLocalStorageExist) ? true : false ; 
   }
 
