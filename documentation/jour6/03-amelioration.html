@@ -1,0 +1,103 @@
+// bug 
+// si je suis dans le back office et que je clique sur le lien déconnexion
+
+// reste sur le back office ???? 
+// vider le localStorage + redirection vers la page de connexion 
+
+// le service Auth
+dans la méthode logout 
+vider + redirection vers la page de connexion 
+
+import { Router } from "@angular/router";
+
+constructor( private _route : Router) { }
+
+logout():void{
+    localStorage.removeItem("token");
+    // supprimer le token du localstorage 
+    // et redirection vers la page de connexion
+    this._route.navigate(['/connexion']);
+  }
+
+// je suis un développeur / hacker 
+
+// je suis connecté au back office et je copie l'adresse de la page d'accueil du back office : http://localhost:4200/admin 
+// je me déconnecte : 
+// et j'essaie : http://localhost:4200/admin  
+
+// bizarre => j'arrive quand même accéder au back office uniquement en connaissant l'adresse : http://localhost:4200/admin   
+
+
+
+// guard 
+// variante de route que l'on crée dans le fichier app.module.ts 
+
+// certaine route ne sont utilisables QUE si on est connecté 
+// page spéciale qui dit VOUS devez au préalable vous êtes connecté pour accéder à cette ressource / page  
+
+=> sécuriser toutes les pages du back office 
+
+ng g s services/guard
+
+import { Injectable } from '@angular/core';
+import { AuthService } from './auth.service';
+import {  Router , CanActivate , ActivatedRouteSnapshot } from "@angular/router";
+@Injectable({
+  providedIn: 'root'
+})
+export class GuardService implements CanActivate {
+  canActivate(_route: ActivatedRouteSnapshot):boolean{
+    if(this._auth.isLoggedIn()){
+      return true ;
+    }
+    this._route.navigate(["/non-autorise"]);
+    return false;
+  }
+  constructor( private _auth : AuthService , private _route : Router) { }
+}
+
+// une fois le Guard est défini => utiliser dans app.module.ts 
+
+import { GuardService }  from "./services/guard.service";
+
+
+RouterModule.forRoot([
+      { path: "" , component : AccueilComponent },
+      { path: "contact" , component : ContactComponent },
+      { path: "connexion" , component : ConnexionComponent },
+      { path: "search/:mot" , component : SearchPageComponent },
+      { path: "article/:id" , component : ArticleComponent },
+      { path: "admin/post/update/:id" , component : PostUpdateComponent , canActivate : [GuardService] },
+      { path: "admin/post/add" , component : PostAddComponent , canActivate : [GuardService] },
+      { path: "admin" , component : HomeComponent , canActivate : [GuardService] },
+      { path: "**"  , component : NotFoundComponent}
+])
+
+// ng g c non-autorise 
+
+
+RouterModule.forRoot([
+      { path: "" , component : AccueilComponent },
+      { path: "contact" , component : ContactComponent },
+      { path: "connexion" , component : ConnexionComponent },
+      { path: "search/:mot" , component : SearchPageComponent },
+      { path: "article/:id" , component : ArticleComponent },
+      { path: "non-autorise" , component : NonAutoriseComponent },
+      { path: "admin/post/update/:id" , component : PostUpdateComponent , canActivate : [GuardService] },
+      { path: "admin/post/add" , component : PostAddComponent , canActivate : [GuardService] },
+      { path: "admin" , component : HomeComponent , canActivate : [GuardService] },
+      { path: "**"  , component : NotFoundComponent}
+  ])
+
+non-autorise.component.html en s'inpirant du design du composant not-found 
+
+<div class="row">
+    <div class="jumbotron mx-0 mt-4 col-12 bg-warning">
+        <h1 class="display-4 text-center"> 401 <br>
+            <small>Vous devez être connecté</small> </h1>
+    </div>
+</div>
+
+
+
+

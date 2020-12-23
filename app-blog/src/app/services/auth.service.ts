@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class AuthService {
     role : "admin"
   }
 
-  constructor() { }
+  constructor( private _route : Router) { }
 
   login( credentials : { login : string , password : string } ) :boolean {
     if( credentials.login === this.compteUser.login && credentials.password === this.compteUser.mdp ){
@@ -30,6 +31,8 @@ export class AuthService {
   logout():void{
     localStorage.removeItem("token");
     // supprimer le token du localstorage 
+    // et redirection vers la page de connexion
+    this._route.navigate(['/connexion']);
   }
 
   isLoggedIn() :boolean{

@@ -17,6 +17,9 @@ import { HomeComponent } from './admin/home/home.component';
 import { PostAddComponent } from './admin/post-add/post-add.component';
 import { PostUpdateComponent } from './admin/post-update/post-update.component';
 
+import { GuardService }  from "./services/guard.service";
+import { NonAutoriseComponent } from './non-autorise/non-autorise.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +34,8 @@ import { PostUpdateComponent } from './admin/post-update/post-update.component';
     NotFoundComponent,
     HomeComponent,
     PostAddComponent,
-    PostUpdateComponent
+    PostUpdateComponent,
+    NonAutoriseComponent
   ],
   imports: [
   BrowserModule , 
@@ -42,9 +46,10 @@ import { PostUpdateComponent } from './admin/post-update/post-update.component';
       { path: "connexion" , component : ConnexionComponent },
       { path: "search/:mot" , component : SearchPageComponent },
       { path: "article/:id" , component : ArticleComponent },
-      { path: "admin/post/update/:id" , component : PostUpdateComponent },
-      { path: "admin/post/add" , component : PostAddComponent },
-      { path: "admin" , component : HomeComponent },
+      { path: "non-autorise" , component : NonAutoriseComponent },
+      { path: "admin/post/update/:id" , component : PostUpdateComponent , canActivate : [GuardService] },
+      { path: "admin/post/add" , component : PostAddComponent , canActivate : [GuardService] },
+      { path: "admin" , component : HomeComponent , canActivate : [GuardService] },
       { path: "**"  , component : NotFoundComponent}
   ])
   ],
