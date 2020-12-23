@@ -27,6 +27,7 @@ export class MenuComponent {
   url : string = "https://via.placeholder.com/60x40?text=jour3";
   menu : Array< { label : string , url : string} > = [ 
                   { label: "Accueil" , url : "/"} , 
+                  { label : "Créations" , url :"/creations"},
                   { label : "Contact" , url: "/contact"}
                 ];
 

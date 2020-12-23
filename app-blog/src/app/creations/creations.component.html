@@ -1,0 +1,7 @@
+<div class="grille mt-3">
+    <article *ngFor="let article of articles" [class]="article.span" class="border border-dark p-3 rounded text-center">
+        <img [src]="article.img" alt="" class="img-fluid img-thumbnail">
+        <h2 class="h5">{{ article.title}}</h2>
+        <p *ngIf="article.span != 'span-1'">{{ article.body}}</p>
+    </article>
+</div>

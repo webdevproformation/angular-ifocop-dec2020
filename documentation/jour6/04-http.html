@@ -1,0 +1,154 @@
+Jusqu'à maintenant => récupérer des données que l'on a stocké directement dans 
+nos fichiers de services 
+
+auth.service.ts 
+data.service.ts 
+
+=> récupérer des données qui sont sur internet (API)
+
+API : Application Program Interface 
+=> adresse factice 
+=> google => json placeholder => http://jsonplaceholder.typicode.com/
+
+=> http://jsonplaceholder.typicode.com/posts ( Back office )
+
+// le but du jeu => récupérer ces données et de les afficher dans un nouveau composant
+
+// ng g c creation
+=> contenir toutes les 
+
+=> récupérer les données et les afficher dans la page 
+=> crud => supprimer au back office => réaliser la suppression (VRAI)
+=> retourner 
+
+=> possibilité de créer rapidement des back office => site internet FIREBASE 
+
+https://firebase.google.com/
+
+=> http://jsonplaceholder.typicode.com/posts
+
+-------------- 
+
+créer un nouveau service : ng g s services/data-online 
+
+data-online.service.ts 
+
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class DataOnlineService {
+  private _urlApi : string = "http://jsonplaceholder.typicode.com/posts";
+  getAll<T>(){}
+  constructor() { }
+}
+
+// ajouter dans app.module.ts 
+import { HttpClientModule } from "@angular/common/http";
+
+imports: [ 
+    ... ,
+    HttpClientModule
+]
+
+// data-online.service.ts 
+import { HttpClient } from "@angular/common/http";
+
+constructor( private _http : HttpClient) { }
+
+getAll<T>(){
+    return this._http.get( this._urlApi);
+}
+
+// créer un composant ng g c creations
+
+// associer le composant => menu 
+
+app.module.ts 
+ajouter une nouvelle route 
+
+{ path: "creations" , component : CreationsComponent },
+
+menu.component.ts => ajouter le lien dans le menu 
+
+// afficher les données qui sont 
+
+// creations.component.ts 
+
+import { Component, OnInit } from '@angular/core';
+import { DataOnlineService } from "../services/data-online.service";
+
+@Component({
+  selector: 'app-creations',
+  templateUrl: './creations.component.html',
+  styleUrls: ['./creations.component.css']
+})
+export class CreationsComponent implements OnInit {
+  articles : Array<{}>
+  constructor( private _data : DataOnlineService) { }
+
+  ngOnInit(): void {
+    // RxJS => programmation réactive 
+    this._data.getAll().subscribe(  function( reponse :any ){ 
+      // afficher les données à l'écran dans le composant creation.component.html 
+      // ne pas hésiter bootstrap pour la mise en forme !! et display grid 
+
+      // retravailler le tableau avant de l'envoyer à la vue 
+      
+      let reponseModifiee = reponse.map( function( item ){
+        return {
+          title : item.title,
+          img : "https://source.unsplash.com/random/900x200?v"+ (Math.random().toFixed(2)) ,
+          body : item.body,
+          span : `span-${ ((Math.random()*3) + 1).toFixed(0) }`
+        }
+      } )
+      // 1
+      
+      //console.log(reponseModifiee);
+      this.articles = reponseModifiee ;
+    }.bind(this)  )
+    // pas des créations => la console 
+  }
+
+}
+
+// vue 
+
+<div class="grille mt-3">
+    <article *ngFor="let article of articles" [class]="article.span" class="border border-dark p-3 rounded text-center">
+        <img [src]="article.img" alt="" class="img-fluid img-thumbnail">
+        <h2 class="h5">{{ article.title}}</h2>
+        <p *ngIf="article.span != 'span-1'">{{ article.body}}</p>
+    </article>
+</div>
+
+// css 
+
+.grille{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 10px;
+    grid-auto-flow: dense;
+}
+.span-1{
+    grid-column: span 1;
+}
+.span-2{
+    grid-column: span 2;
+}
+.span-3{
+    grid-column: span 3;
+}
+.span-4{
+    grid-column: span 4;
+}
+.span-5{
+    grid-column: span 5;
+}
+.span-6{
+    grid-column: span 6;
+}
+
+
