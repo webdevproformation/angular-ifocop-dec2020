@@ -299,7 +299,14 @@ export class DataService {
     }
   }
 
-  update(){}
+  update<T>( article : any ){
+    let articleUpData = this.data.find( function(item){
+      return item._id === article._id
+    } )
+    let index = this.data.indexOf(articleUpData);
+
+    this.data[index] = article;
+  }
 
   // back office et le CRUD 
   // fin 
@@ -312,7 +319,6 @@ export class DataService {
       return item._id === id
     } );
   }
-
   search<T>( motRecherche: string ) {
       let resultat = []; // par défaut le résultat == rien == tableau vide 
 
@@ -327,8 +333,6 @@ export class DataService {
       } );
       return resultat;
   }
-
-
   getAll<T>(){
     return this.data;
   }

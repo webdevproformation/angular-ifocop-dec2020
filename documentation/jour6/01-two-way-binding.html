@@ -1,0 +1,36 @@
+dans un composant  
+
+envoyer des informations class => html 
+
+                    attribut class ==>    {{ }}   [src]="attribut"
+
+envoyer des informations html  => la class 
+
+                    (event)="onAction()"  =>   onAction(){ }
+                    (event)="onAction($event)"  =>   onAction($event){ $event.target.dataset }
+
+
+two way binding   class   <===>  html (html et class sont synchronisés en même temps)
+
+OBLIGATOIREMENT activer le module import { FormsModule } from '@angular/forms';
+dans app.module.ts 
+
+                    dans la class                dans le html 
+
+                     attribut                       [(ngModel)]="attribut"
+
+                                                    banane dans une boite [()] two way binding 
+
+dans notre module post-update 
+article 
+
+onInit(){                                             <input type="text" name="nom"... [(ngModel)]="article.nom">
+    this.article = { _id: 1, nom :"nom" }
+}
+
+à utiliser dans certains cas de figures (pas tout le temps )
+AngularJS (version 1 de Angular) => ils utilisaient ça tout le temps : application lente 
+@Input / @Output 
+
+
+

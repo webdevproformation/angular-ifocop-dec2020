@@ -1,0 +1,94 @@
+aller dans le composant post-update.component.html 
+
+(vue) => modifier le formulaire 
+
+
+<div class="form-group">
+    <label for="titre">titre</label>
+    <input type="text" id="titre" name="titre" class="form-control" [(ngModel)]="article.company" #titre >
+</div>
+
+pour chaque input / text
+
+
+<div class="form-group">
+    <label for="titre">titre</label>
+    <input type="text" id="titre" name="titre" class="form-control" [(ngModel)]="article.company" >
+</div>
+
+
+-------------------- 
+
+au niveau du submit => 
+
+<input type="submit" class="btn btn-outline-success btn-sm" (click)="onSubmit( _id, titre ... ) ">
+
+supprimer l'event binding sur le click 
+
+<input type="submit" class="btn btn-outline-success btn-sm">
+
+plutôt le faire au niveau de la balise form du formulaire 
+
+<form class="col-12" #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+=> 1 seule variable f qui contient toutes les champs du formulaire 
+
+--------------------  
+
+si je veux créer un champ de formulaire et le remplir certains champs par défaut :
+
+<div class="form-group">
+    <label for="titre">titre</label>
+    <input type="text" id="titre" name="titre" class="form-control" [(ngModel)]="article.company">
+</div>
+
+si je veux créer un champ de formulaire et ne pas lui donner une valeur par défaut :
+
+<div class="form-group">
+    <label for="titre">titre</label>
+    <input type="text" id="titre" name="titre" class="form-control" ngModel #titre="ngModel" >
+</div>
+
+-------------------- 
+
+côté past-update.component.ts  => ressemble beaucoup au formulaire dans post-add.component.ts
+
+onSubmit( f ){
+
+    let donnees = {
+      _id : f.value._id ,
+      company : f.value.titre ,
+      name : f.value.auteur  ,
+      about : f.value.contenu ,
+      picture : "http://placehold.it/32x32",
+      tags : (typeof(f.value.tags) == "string") ? f.value.tags.split(",") : f.value.tags
+    }
+    // si je ne modifie pas les tags // le champ tags => array
+    // si je modifie les tags => le champ tags => string => le retranformer en tableau 
+    this._data.update( donnees );
+    // appeler le service update ... demain  */
+  }
+
+  -------------------- 
+
+dans le fichier data.service.ts 
+
+modifier la méthode update dans le service 
+
+update( article : {} ){
+    // rechercher dans la variable this.data si l'article existe 
+
+    let articleToUpdate = this.data.find( function( item ){
+        return item._id === article._id
+    } )
+    // rechercher l'index dans this.data
+    let index = this.data.indexOf( articleToUpdate );
+
+    // effectue la mise à jour 
+    this.data[index] = article ;
+}
+
+  -------------------- 
+post-update.component.ts 
+
+

@@ -19,7 +19,7 @@ export class PostAddComponent implements OnInit {
       name : f.value.auteur || "moi" ,
       about : f.value.contenu || "un peu de contenu",
       picture : "http://placehold.it/32x32",
-      tags : f.value.tags.split(",") || "js,jquery".split(",")
+      tags : (f.value.tags.length > 0) ? f.value.tags.split(",") : "js,jquery".split(",")
     }
      // envoyer au service 
     this._data.add( donnees );
